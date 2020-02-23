@@ -6,14 +6,12 @@ Users will make an account in order to save any decks that they may create. Any 
 ![CC Database Diagram](https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/Chrono%20Clash%20Deck%20Builder.png)
 ## Wireframe Diagrams
 
-![wireframe diagram main]
-(https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/Wireframe/CC%20Wireframe%20Main%20Page.png)
-
-![wireframe diagram deck Builder]
-(https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/Wireframe/CC%20Wireframe%20Deck%20Builder%20Page.png)
-
+![wireframe diagram main](https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/Wireframe/CC%20Wireframe%20Main%20Page.png)
 ![wireframe diagram cards](https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/Wireframe/CC%20Wireframe%20Cards%20Page.png)
+![wireframe diagram deck](https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/Wireframe/CC%20Wireframe%20Decks%20Page.png)
+![wireframe diagram deck Builder](https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/Wireframe/CC%20Wireframe%20Deck%20Builder%20Page.png)
 
-![wireframe diagram deck]
-(https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/Wireframe/CC%20Wireframe%20Decks%20Page.png)
+
+
+
 
