@@ -4,7 +4,7 @@ Chrono Clash Deck Builder is an ASP.NET based web project to create a card datab
 Users will make an account in order to save any decks that they may create. Any Visitor to site will have access to view the card database and all public Decks on the site. The deck builder will be designed to follow the rules of the game to ensure only legal decks for the game are created.
 
 <a name="table-of-contents"/>
-#Table of contents
+# Table of contents
 
 
 <!--ts-->
@@ -15,12 +15,12 @@ Users will make an account in order to save any decks that they may create. Any 
    * [Requirements](#requirements)
 <!--te-->
 <a name="database-diagrams"/>
-###Database Diagrams
+### Database Diagrams
 
 ![CC Database Diagram](https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/Chrono%20Clash%20Deck%20Builder.png)
 
 <a name="wireframe-diagrams"/>
-###Wireframe Diagrams
+### Wireframe Diagrams
 
 ![wireframe diagram main](https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/Wireframe/CC%20Wireframe%20Main%20Page.png)
 ![wireframe diagram cards](https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/Wireframe/CC%20Wireframe%20Cards%20Page.png)
@@ -28,10 +28,10 @@ Users will make an account in order to save any decks that they may create. Any 
 ![wireframe diagram deck Builder](https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/Wireframe/CC%20Wireframe%20Deck%20Builder%20Page.png)
 
 <a name="uml-diagrams"/>
-###UML Diagrams
+### UML Diagrams
 
 <a name="requirements"/>
-###Requirements
+### Requirements
 
 
 
