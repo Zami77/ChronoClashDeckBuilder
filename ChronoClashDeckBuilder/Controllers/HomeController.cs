@@ -15,7 +15,7 @@ namespace ChronoClashDeckBuilder.Controllers
 
         public HomeController(ILogger<HomeController> logger)
         {
-            _logger = logger;
+           _logger = logger;
         }
 
         public IActionResult Index()
@@ -24,11 +24,6 @@ namespace ChronoClashDeckBuilder.Controllers
         }
 
         public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult CardDatabase()
         {
             return View();
         }
