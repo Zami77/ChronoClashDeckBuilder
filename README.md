@@ -34,9 +34,34 @@ Users will make an account in order to save any decks that they may create. Any 
 
 ### UML Diagrams
 
+![UML CC Diagram]
+()
+
 <a name="requirements"/>
 
 ### Requirements
+User Stories </br>
+1.1. As a Card Game Player I want to view all cards released, so that I know all the cards. </br>
+1.2	 As a Card Game Player I want to build decks so that I can have my decks saved to view later and share to others.</br>
+
+Use-Cases</br>
+2.1 Given user when they click on card list Then all cards are displayed </br>
+2.2 Given user when they apply filters then all cards are filtered</br>
+2.3 Given user when they save deck then the deck is saved to their user account</br>
+
+Requirements</br>
+4.1.1 User shall log in</br>
+4.1.2 User shall create an account</br>
+4.1.3. User shall view cards</br>
+4.1.4 User shall build decks</br>
+4.1.5 User shall save decks</br>
+4.2.1 System shall provide webpage and UI</br>
+4.3.1 Software shall compile list of Cards</br>
+4.3.2 Software shall ensure decks that are being built are following the rules</br>
+4.3.3 Software shall make sure decks are being saved to database</br>
+4.3.4 Software shall make sure card database is up to date</br>
+
+
 
 
 
