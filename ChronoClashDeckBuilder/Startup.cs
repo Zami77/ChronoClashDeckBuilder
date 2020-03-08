@@ -21,11 +21,10 @@ namespace ChronoClashDeckBuilder
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Models.ChronoClashDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration["Data:ChronoClashCards:ConnectionString"]));
-            services.AddTransient<ChronoClashDeckBuilder.Models.ICardRepository, ChronoClashDeckBuilder.Models.EFCardRepository>();
+                options.UseSqlServer(Configuration["Data:ChronoClashCards:ConnectionString"]));
+            services.AddScoped<ChronoClashDeckBuilder.Models.ICardRepository, ChronoClashDeckBuilder.Models.EFCardRepository>();
             services.AddControllersWithViews();
-            //services.AddMVC();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -16,8 +16,8 @@ namespace ChronoClashDeckBuilder.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            return View(repository.GetAllCards);
         }
-        public IActionResult ListCards() => View(repository.Cards);
+
     }
 }

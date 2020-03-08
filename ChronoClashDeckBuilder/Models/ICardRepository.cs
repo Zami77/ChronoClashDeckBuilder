@@ -7,6 +7,8 @@ namespace ChronoClashDeckBuilder.Models
 {
     public interface ICardRepository
     {
-        IQueryable<Card> Cards { get; }
+        Card GetCard(string cardName);
+        IQueryable<Card> GetAllCards { get; }
+        Card Add(Card card);
     }
 }
