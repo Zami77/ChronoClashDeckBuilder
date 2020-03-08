@@ -1,7 +1,7 @@
 # Chrono ClashDeck Builder
 Chrono Clash Deck Builder is an ASP.NET based web project to create a card database and deck builder for the Chorno Clash card game. The Chrono Clash Card Game is a Living Card Game that incorporates intellectual properties to battle against each other, more information can be found at [The Official Chrono Clash site](https://www.chronoclashsystem.com/en.php). 
 
-Users will make an account in order to save any decks that they may create. Any Visitor to site will have access to view the card database and all public Decks on the site. The deck builder will be designed to follow the rules of the game to ensure only legal decks for the game are created.
+Users will make an account in order to save any decks that they may create. Any Visitor to the site will have access to view the card database and all public Decks on the site. The deck builder will be designed to follow the rules of the game to ensure only legal decks for the game are created.
 
 <a name="table-of-contents"/>
 
@@ -61,6 +61,7 @@ Requirements</br>
 4.3.3 Software shall make sure decks are being saved to database</br>
 4.3.4 Software shall make sure card database is up to date</br>
 
+<a name="requirements-and-test-tables"/>
 ### Requirements and Test Table
 
 | Requirements ID | Requirement Description                                                  | Test Method |
