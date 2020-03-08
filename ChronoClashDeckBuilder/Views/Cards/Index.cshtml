@@ -1,12 +1,84 @@
-﻿
+﻿@page
+@model ChronoClashDeckBuilder.IndexModel
+
 @{
     ViewData["Title"] = "Index";
 }
-<html>
-    <h1>Card List!</h1>
 
-    <div>
-        <p>Test</p>
-    </div>
-</html>
+<h1>Index</h1>
 
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Card[0].CardSet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Card[0].CardType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Card[0].CardImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Card[0].CardColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Card[0].CardCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Card[0].CardStrength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Card[0].CardName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Card[0].CardAbilities)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Card[0].CardStackAbilities)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Card) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardSet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardStrength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardAbilities)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardStackAbilities)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CardNumber">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CardNumber">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CardNumber">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
