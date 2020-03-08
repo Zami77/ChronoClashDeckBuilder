@@ -62,6 +62,7 @@ Requirements</br>
 4.3.4 Software shall make sure card database is up to date</br>
 
 <a name="requirements-and-test-tables"/>
+
 ### Requirements and Test Table
 
 | Requirements ID | Requirement Description                                                  | Test Method |
