@@ -1,84 +1,113 @@
-﻿@page
-@model ChronoClashDeckBuilder.IndexModel
+﻿@model IEnumerable<Card>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Card List</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Card[0].CardSet)
+                CardSet
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Card[0].CardType)
+                CardType
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Card[0].CardImage)
+                CardColor
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Card[0].CardColor)
+                CardCost
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Card[0].CardCost)
+                CardStrength
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Card[0].CardStrength)
+                CardName
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Card[0].CardName)
+                CardAbilities
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Card[0].CardAbilities)
+                CardStackAbilities
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Card[0].CardStackAbilities)
+                CardImage
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Card) {
+
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CardSet)
+                Naruto Boruto
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CardType)
+                Action
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CardImage)
+                Green
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CardColor)
+                10
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CardCost)
+                12
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CardStrength)
+                Kakashi Hatake
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CardName)
+                Guardian Stack (+3)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CardAbilities)
+                
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CardStackAbilities)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.CardNumber">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.CardNumber">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.CardNumber">Delete</a>
+                <img src="~/Images/Chrono Clash Card Images/Naruto Set 1/NB01-09-B.jpg" 
+                     alt="Kakashi"
+             style="width:136px;height:185px;"
+             align="right"/>
             </td>
         </tr>
-}
+
     </tbody>
+    @*<tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.CardSet
+                    </td>
+                    <td>
+                        @item.CardType
+                    </td>
+                    <td>
+                        @item.CardImage
+                    </td>
+                    <td>
+                        @item.CardColor
+                    </td>
+                    <td>
+                        @item.CardCost
+                    </td>
+                    <td>
+                        @item.CardStrength
+                    </td>
+                    <td>
+                        @item.CardName
+                    </td>
+                    <td>
+                        @item.CardAbilities
+                    </td>
+                    <td>
+                        @item.CardStackAbilities
+                    </td>
+
+                </tr>
+            }
+        </tbody>*@
 </table>

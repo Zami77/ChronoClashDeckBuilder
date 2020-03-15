@@ -12,10 +12,11 @@ namespace ChronoClashDeckBuilder.Models
         {
             context = ctx;
         }
-        public IQueryable<Card> GetAllCards => context.Cards;
+        public IQueryable<Card> Cards => context.Cards.AsQueryable<Card>();
         public Card Add(Card card)
         {
-            throw new NotImplementedException();
+            context.Add(card);
+            return card;
         }
 
         public Card GetCard(string cardName)

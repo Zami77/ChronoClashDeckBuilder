@@ -4,13 +4,14 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 
+
 namespace ChronoClashDeckBuilder.Models
 {
     public partial class ChronoClashDbContext : DbContext
     {
-        public ChronoClashDbContext()
-        {
-        }
+        //public ChronoClashDbContext()
+        //{
+        //}
 
         public ChronoClashDbContext(DbContextOptions<ChronoClashDbContext> options)
             : base(options)
@@ -26,7 +27,7 @@ namespace ChronoClashDeckBuilder.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-4Q5LTKP;Initial Catalog=ChronoClash;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-9VE1296;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
 

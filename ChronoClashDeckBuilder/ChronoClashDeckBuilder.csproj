@@ -12,13 +12,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200314231520_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200314231520_InitialCreate.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
     <None Include="wwwroot\Images\Naruto Believe It.jpg" />
   </ItemGroup>
 
   
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.4.0" />
     <PackageReference Include="Microsoft.AspNet.WebPages.Data" Version="3.2.7" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
       <PrivateAssets>all</PrivateAssets>

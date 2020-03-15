@@ -21,7 +21,7 @@ namespace ChronoClashDeckBuilder
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Models.ChronoClashDbContext>(options =>
-                options.UseSqlServer(Configuration["Data:ChronoClashCards:ConnectionString"]));
+                options.UseSqlServer("Data Source=DESKTOP-9VE1296;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
             services.AddScoped<ChronoClashDeckBuilder.Models.ICardRepository, ChronoClashDeckBuilder.Models.EFCardRepository>();
             services.AddControllersWithViews();
             services.AddMvc();

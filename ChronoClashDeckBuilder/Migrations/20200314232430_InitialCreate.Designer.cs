@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChronoClashDeckBuilder.Migrations
 {
     [DbContext(typeof(ChronoClashDbContext))]
-    [Migration("20200308215652_InitialCreate")]
+    [Migration("20200314232430_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

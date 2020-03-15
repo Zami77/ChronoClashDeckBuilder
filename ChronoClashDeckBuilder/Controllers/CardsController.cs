@@ -2,22 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ChronoClashDeckBuilder.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ChronoClashDeckBuilder.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChronoClashDeckBuilder.Controllers
 {
     public class CardsController : Controller
     {
-        private ICardRepository repository;
-        public CardsController(ICardRepository repo)
+        private ChronoClashDbContext context;
+        public CardsController(ChronoClashDbContext ctx)
         {
-            repository = repo;
+            context = ctx;
         }
-        public IActionResult Index()
+        // GET: Cards
+        public  IActionResult Index()
         {
-            return View();
+            return View(context.Cards);
         }
 
+       
     }
 }
