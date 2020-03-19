@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Card>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Deck Builder!</h1>
+<p>Still have to implement picking a card and adding to deck.</p>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/Images/Chrono Clash Card Images/Naruto Set 1/@item.CardImage"
+                         alt="@item.CardName"
+                         style="width:136px;height:185px;" />
+                </td>
+            </tr>
+        }
+    </tbody>
