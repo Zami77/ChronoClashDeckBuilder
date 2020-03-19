@@ -11,15 +11,15 @@ namespace ChronoClashDeckBuilder.Controllers
 {
     public class CardsController : Controller
     {
-        private ChronoClashDbContext context;
-        public CardsController(ChronoClashDbContext ctx)
+        private ICardRepository repository;
+        public CardsController(ICardRepository repo)
         {
-            context = ctx;
+            repository = repo;
         }
         // GET: Cards
         public  IActionResult Index()
         {
-            return View(context.Cards);
+            return View(repository.Cards);
         }
 
        
