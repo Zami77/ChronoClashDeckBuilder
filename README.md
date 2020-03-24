@@ -94,7 +94,7 @@ Requirements</br>
 
 ### Card Data
 
-An excel file for the [Card Data](https://1drv.ms/x/s!As_NDUCOYXoGgd5wPTa4tM9WGTctVg?e=bKFpsZ) These sheet automatically produces a SQL Query to be inserted into the database.
+An excel file for the [Card Data](https://1drv.ms/x/s!As_NDUCOYXoGgd5wPTa4tM9WGTctVg?e=bKFpsZ) These sheets automatically produces a SQL Query to be inserted into the database.
 
 ### Prototype
 
