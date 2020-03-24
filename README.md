@@ -9,7 +9,6 @@ Users will make an account in order to save any decks that they may create. Any 
 
 
 <!--ts-->
-   * [Table of contents](#table-of-contents)
    * [Database Diagrams](#database-diagrams)
    * [Wireframe Diagrams](#wireframe-diagrams)
    * [UML Diagrams](#uml-diagrams)
