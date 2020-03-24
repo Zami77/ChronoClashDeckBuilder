@@ -15,7 +15,8 @@ Users will make an account in order to save any decks that they may create. Any 
    * [UML Diagrams](#uml-diagrams)
    * [Requirements](#requirements)
    * [Requirements and Test Table](#requirements-and-test-table)
-   * [Prototype](https://github.com/Zami77/ChronoClashDeckBuilder/tree/master/Prototype)
+   * [Card Data](#card-data)
+   * [Prototype](#prototype)
 <!--te-->
 <a name="database-diagrams"/>
 
@@ -91,6 +92,10 @@ Requirements</br>
 | 8       | 4.3.2           | View if deck is created with invalid parameters  | Not Tested     |           |
 | 9       | 4.3.3           | Save deck and see if it's saved to the account   | Not Tested     |           |
 | 10      | 4.3.4           | View cards and make sure they are up to date     | Not Tested     |           |
+
+### Card Data
+
+An excel file for the [Card Data](https://1drv.ms/x/s!As_NDUCOYXoGgd5wPTa4tM9WGTctVg?e=bKFpsZ) These sheet automatically produces a SQL Query to be inserted into the database.
 
 ### Prototype
 
