@@ -15,6 +15,7 @@ Users will make an account in order to save any decks that they may create. Any 
    * [UML Diagrams](#uml-diagrams)
    * [Requirements](#requirements)
    * [Requirements and Test Table](#requirements-and-test-table)
+   * [Prototype](https://github.com/Zami77/ChronoClashDeckBuilder/tree/master/Prototype)
 <!--te-->
 <a name="database-diagrams"/>
 
@@ -91,5 +92,7 @@ Requirements</br>
 | 9       | 4.3.3           | Save deck and see if it's saved to the account   | Not Tested     |           |
 | 10      | 4.3.4           | View cards and make sure they are up to date     | Not Tested     |           |
 
+### Prototype
 
+Link to the [Prototype](https://github.com/Zami77/ChronoClashDeckBuilder/tree/master/Prototype) ReadMe
 
