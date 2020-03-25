@@ -9,12 +9,13 @@ Users will make an account in order to save any decks that they may create. Any 
 
 
 <!--ts-->
-   * [Table of contents](#table-of-contents)
    * [Database Diagrams](#database-diagrams)
    * [Wireframe Diagrams](#wireframe-diagrams)
    * [UML Diagrams](#uml-diagrams)
    * [Requirements](#requirements)
    * [Requirements and Test Table](#requirements-and-test-table)
+   * [Card Data](#card-data)
+   * [Prototype](#prototype)
 <!--te-->
 <a name="database-diagrams"/>
 
@@ -91,5 +92,11 @@ Requirements</br>
 | 9       | 4.3.3           | Save deck and see if it's saved to the account   | Not Tested     |           |
 | 10      | 4.3.4           | View cards and make sure they are up to date     | Not Tested     |           |
 
+### Card Data
 
+An excel file for the [Card Data](https://1drv.ms/x/s!As_NDUCOYXoGgd5wPTa4tM9WGTctVg?e=bKFpsZ) These sheets automatically produces a SQL Query to be inserted into the database.
+
+### Prototype
+
+Link to the [Prototype](https://github.com/Zami77/ChronoClashDeckBuilder/tree/master/Prototype) ReadMe
 
