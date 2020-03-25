@@ -1,6 +1,5 @@
 # Chrono Clash Site Prototype
-A basic prototype for the site will comprise of a few images. I'm still working on implementing the whole card database, 
-but I have put one card in the format that I want it to be displayed.
+A basic prototype for the site will comprise of the images below. Some recent achievements include connecting SQL database to the web application using Entity Framework and displaying all cards currently in the database.
 
 ![Home Page](https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/wwwroot/Images/Home%20Page%20Prototype.png)
 
