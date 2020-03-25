@@ -1,7 +1,7 @@
 # Chrono Clash Deck Builder
-Chrono Clash Deck Builder is an ASP.NET based web project to create a card database and deck builder for the Chorno Clash card game. The Chrono Clash Card Game is a Living Card Game that incorporates intellectual properties to battle against each other, more information can be found at [The Official Chrono Clash site](https://www.chronoclashsystem.com/en.php). 
+Chrono Clash Deck Builder is an ASP.NET based web project to create a card database and deck builder for the Chrono Clash card game. The Chrono Clash Card Game is a Living Card Game that incorporates intellectual properties to battle against each other, more information can be found at [The Official Chrono Clash site](https://www.chronoclashsystem.com/en.php). 
 
-Users will make an account in order to save any decks that they may create. Any Visitor to the site will have access to view the card database and all public Decks on the site. The deck builder will be designed to follow the rules of the game to ensure only legal decks for the game are created.
+On my site, Users will make an account in order to save any decks that they may create. Any Visitor to the site will have access to view the card database and all public Decks on the site. The deck builder will be designed to follow the rules of the game to ensure only legal decks for the game are created.
 
 <a name="table-of-contents"/>
 
@@ -53,7 +53,7 @@ Use-Cases</br>
 Requirements</br>
 4.1.1 User shall log in</br>
 4.1.2 User shall create an account</br>
-4.1.3. User shall view cards</br>
+4.1.3 User shall view cards</br>
 4.1.4 User shall build decks</br>
 4.1.5 User shall save decks</br>
 4.2.1 System shall provide webpage and UI</br>
@@ -94,7 +94,7 @@ Requirements</br>
 
 ### Card Data
 
-An excel file for the [Card Data](https://1drv.ms/x/s!As_NDUCOYXoGgd5wPTa4tM9WGTctVg?e=bKFpsZ) These sheets automatically produces a SQL Query to be inserted into the database.
+An excel file for the [Card Data](https://1drv.ms/x/s!As_NDUCOYXoGgd5wPTa4tM9WGTctVg?e=bKFpsZ). These sheets automatically produces a SQL Query to be inserted into the database.
 
 ### Prototype
 
