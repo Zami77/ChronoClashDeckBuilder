@@ -11,7 +11,7 @@ On my site, Users will make an account in order to save any decks that they may 
 <!--ts-->
    * [Database Diagrams](#database-diagrams)
    * [Wireframe Diagrams](#wireframe-diagrams)
-   * [UML Diagrams](#uml-diagrams)
+   * [Use Case Diagrams](#uml-diagrams)
    * [Requirements](#requirements)
    * [Requirements and Test Table](#requirements-and-test-table)
    * [Card Data](#card-data)
@@ -34,7 +34,7 @@ On my site, Users will make an account in order to save any decks that they may 
 
 <a name="uml-diagrams"/>
 
-### UML Diagrams
+### Use Case Diagram
 
 ![UML CC Diagram](https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/CC%20Use%20Case%20UML.png)
 
