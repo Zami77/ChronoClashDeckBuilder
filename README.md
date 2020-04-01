@@ -21,6 +21,8 @@ On my site, Users will make an account in order to save any decks that they may 
 
 ### Database Diagrams
 
+![SSMS Database Diagram](https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/SSMS%20Database%20Diagram.PNG)
+
 ![CC Database Diagram](https://github.com/Zami77/ChronoClashDeckBuilder/blob/master/ChronoClashDeckBuilder/App_Data/Chrono%20Clash%20Deck%20Builder.png)
 
 <a name="wireframe-diagrams"/>
