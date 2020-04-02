@@ -16,7 +16,11 @@ namespace ChronoClashDeckBuilder.Controllers
         }
         public IActionResult Index()
         {
-            return View(repository.Cards);
+            return View(new Models.ViewModels.DeckBuilderListViewModel
+            {
+                Cards = repository.Cards,
+                NewDeck = new List<Card>()
+            }) ;
         }
     }
 }
