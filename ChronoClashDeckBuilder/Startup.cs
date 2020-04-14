@@ -21,7 +21,7 @@ namespace ChronoClashDeckBuilder
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Models.ChronoClashDbContext>(options =>
-                options.UseSqlServer(Configuration["Data:ChronoClashCards:ConnectionStringHomePC"]));
+                options.UseSqlServer(Configuration["Data:ChronoClashCards:ChronoClashAzure"]));
             services.AddScoped<ChronoClashDeckBuilder.Models.ICardRepository, ChronoClashDeckBuilder.Models.EFCardRepository>();
             services.AddControllersWithViews();
             services.AddMvc();

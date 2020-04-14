@@ -8,6 +8,6 @@ namespace ChronoClashDeckBuilder.Models.ViewModels
     public class DeckBuilderListViewModel
     {
         public IEnumerable<Card> Cards { get; set; }
-        public IEnumerable<Card> NewDeck { get; set; }
+        public List<Card> NewDeck { get; set; }
     }
 }

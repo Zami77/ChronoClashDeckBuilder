@@ -14,13 +14,16 @@ namespace ChronoClashDeckBuilder.Controllers
         {
             repository = repo;
         }
-        public IActionResult Index()
+        public IActionResult Index(List<Card> curDeck, Card cardToAdd)
         {
+            if (cardToAdd != null)
+                curDeck.Add(cardToAdd);
+
             return View(new Models.ViewModels.DeckBuilderListViewModel
             {
                 Cards = repository.Cards,
-                NewDeck = new List<Card>()
-            }) ;
+                NewDeck = curDeck
+            });
         }
     }
 }
