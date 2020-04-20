@@ -19,9 +19,9 @@ namespace ChronoClashDeckBuilder.Models
             return card;
         }
 
-        public Card GetCard(string cardName)
+        public Card GetCard(string cardNumber)
         {
-            throw new NotImplementedException();
+            return context.Cards.Find(cardNumber);
         }
     }
 }
