@@ -1,5 +1,7 @@
+using ChronoClashDeckBuilder.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,8 +22,11 @@ namespace ChronoClashDeckBuilder
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<Models.ChronoClashDbContext>(options =>
                 options.UseSqlServer(Configuration["Data:ChronoClashCards:ChronoClashAzure"]));
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ChronoClashDbContext>();
             services.AddScoped<ChronoClashDeckBuilder.Models.ICardRepository, ChronoClashDeckBuilder.Models.EFCardRepository>();
             services.AddControllersWithViews();
             services.AddMvc();
@@ -42,6 +47,7 @@ namespace ChronoClashDeckBuilder
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>

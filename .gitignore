@@ -9,6 +9,9 @@
 **/appsettings.staging.json
 **/appsettings.production.json
 
+#ChronoClashDbContext
+**/Models/ChronoClashDbContext.cs
+
 # User-specific files
 *.rsuser
 *.suo

@@ -16,6 +16,8 @@ namespace ChronoClashDeckBuilder.Controllers
         }
         public IActionResult Index(List<Card> curDeck, Card cardToAdd)
         {
+            if (curDeck == null)
+                curDeck = new List<Card>();
             if (cardToAdd != null)
                 curDeck.Add(cardToAdd);
 

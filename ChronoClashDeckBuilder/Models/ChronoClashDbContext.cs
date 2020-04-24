@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 
 
 
 namespace ChronoClashDeckBuilder.Models
 {
-    public partial class ChronoClashDbContext : DbContext
+    public partial class ChronoClashDbContext : IdentityDbContext
     {
         //public ChronoClashDbContext()
         //{
@@ -26,13 +24,13 @@ namespace ChronoClashDeckBuilder.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-9VE1296;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                optionsBuilder.UseSqlServer("Data Source=chronoclash.database.windows.net;Initial Catalog=ChronoClashDatabase;User ID=AdminChronoClash;Password=****;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Card>(entity =>
             {
                 entity.HasKey(e => e.CardNumber)

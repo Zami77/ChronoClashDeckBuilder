@@ -4,14 +4,16 @@ using ChronoClashDeckBuilder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ChronoClashDeckBuilder.Migrations
 {
     [DbContext(typeof(ChronoClashDbContext))]
-    partial class ChronoClashDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200422224359_AddingIdentity-2")]
+    partial class AddingIdentity2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
