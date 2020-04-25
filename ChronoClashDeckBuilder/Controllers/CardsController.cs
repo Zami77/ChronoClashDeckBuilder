@@ -17,11 +17,43 @@ namespace ChronoClashDeckBuilder.Controllers
             repository = repo;
         }
         // GET: Cards
-        public  IActionResult Index()
+        [HttpGet]
+        public  async Task<IActionResult> Index(string currentFilter, string cardName, string cardColor,string cardAbility, int? pageNumber)
         {
-            return View(repository.Cards);
-        }
+            ViewData["CardNameFilter"] = cardName;
+            ViewData["CardColorFilter"] = cardColor;
+            ViewData["CardAbilityFilter"] = cardAbility;
 
+            var cards = repository.Cards;
+
+            //if (isBlue)
+            //    cards = cards.Where(c => c.CardColor.Contains("Blue"));
+            //if (isGreen)
+            //    cards = cards.Where(c => c.CardColor.Contains("Green"));
+            //if (isPurple)
+            //    cards = cards.Where(c => c.CardColor.Contains("Purple"));
+            //if (isRed)
+            //    cards = cards.Where(c => c.CardColor.Contains("Red"));
+
+            if (!String.IsNullOrEmpty(cardName))
+            {
+                cards = cards.Where(c => c.CardName.Contains(cardName));
+                
+            }
+            if (!String.IsNullOrEmpty(cardColor))
+            {
+                cards = cards.Where(c => c.CardColor.Contains(cardColor));
+                
+            }
+            if (!String.IsNullOrEmpty(cardAbility))
+            {
+                cards = cards.Where(c => c.CardAbilities.Contains(cardAbility));
+
+            }
+            int pageSize = 12;
+            return View(await PaginatedList<Card>.CreateAsync(cards.AsNoTracking(), pageNumber ?? 1, pageSize));
+        }
        
+
     }
 }

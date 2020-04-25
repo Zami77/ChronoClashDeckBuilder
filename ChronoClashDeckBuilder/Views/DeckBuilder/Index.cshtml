@@ -5,9 +5,8 @@
 }
 <h1>Deck Builder!</h1>
 <p>Still have to implement picking a card and adding to deck.</p>
-<p>
-</p>
-<tbody>
+
+@*<tbody>
     @foreach (var item in Model.NewDeck)
     {
         <tr>
@@ -22,13 +21,19 @@
     {
     <tr>
         <td>
-            <a href="">
+            @{ 
+                var parms = new Dictionary<string, string>
+                {
+                    {"cardNum", item.CardNumber }
+                };
+            }
+            <a asp-controller="DeckBuilder" asp-action="Index" >
                 <img src="~/Images/Chrono Clash Card Images/@item.CardImage"
-                       alt="@item.CardName"
-                       style="width:136px;height:185px;" />
+                     alt="@item.CardName"
+                     style="width:272px;height:370px;" />
             </a>
         </td>
         
     </tr>
     }
-</tbody>
+</tbody>*@
