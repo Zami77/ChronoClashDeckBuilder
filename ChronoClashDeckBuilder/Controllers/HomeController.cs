@@ -23,6 +23,10 @@ namespace ChronoClashDeckBuilder.Controllers
             return View();
         }
 
+        public IActionResult ContentCreators()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
