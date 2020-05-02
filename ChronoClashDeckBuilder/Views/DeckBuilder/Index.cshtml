@@ -10,34 +10,61 @@
     page!
 </p>
 
-@*<tbody>
-    @foreach (var item in Model.NewDeck)
-    {
-        <tr>
-            <td>
-                @item.CardName
-            </td>
-        </tr>
-    }
-</tbody>
-<tbody>
+<form asp-action="Index" method="get">
+    <div class="form-actions">
+
+        <input type="text" placeholder="Enter Card Name" name="cardName" value="@ViewData["CardNameFilter"]" />
+        <input type="text" placeholder="Enter Card Ability" name="cardAbility" value="@ViewData["CardAbilityFilter"]" />
+        <div class="btn-group btn-group-toggle just" data-toggle="buttons">
+
+            <label class="btn btn-secondary w-100">
+                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Blue" /> Blue
+            </label>
+
+            <label class="btn btn-secondary w-100">
+                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Green" /> Green
+            </label>
+
+            <label class="btn btn-secondary w-100">
+                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Red" /> Red
+            </label>
+
+            <label class="btn btn-secondary w-100">
+                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Purple" /> Purple
+            </label>
+        </div>
+
+        <input type="submit" value="Search" class="btn btn-default" /> |
+        <a asp-action="Index">Reset Filters</a>
+
+    </div>
+</form>
+
+
+<div class="row">
     @foreach (var item in Model.Cards)
     {
-    <tr>
-        <td>
-            @{ 
-                var parms = new Dictionary<string, string>
-                {
-                    {"cardNum", item.CardNumber }
-                };
-            }
-            <a asp-controller="DeckBuilder" asp-action="Index" >
-                <img src="~/Images/Chrono Clash Card Images/@item.CardImage"
-                     alt="@item.CardName"
-                     style="width:272px;height:370px;" />
-            </a>
-        </td>
-        
-    </tr>
+        <img src="~/Images/Chrono Clash Card Images/@item.CardImage"
+             alt="@item.CardName"
+             style="width:272px;height:370px;" />
     }
-</tbody>*@
+</div>
+@*<div class="row">
+    @foreach (var item in Model.NewDeck)
+    {
+
+        @item.CardName
+
+    }
+</div>
+<div class="row">
+    @foreach (var item in Model.Cards)
+    {
+        <a method="post" asp-controller="DeckBuilder" asp-action="AddToDeck" asp-route-cardNumber="@item.CardNumber">
+            <img src="~/Images/Chrono Clash Card Images/@item.CardImage"
+                 alt="@item.CardName"
+                 style="width:272px;height:370px;" />
+
+        </a>
+    }
+</div>*@
