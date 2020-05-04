@@ -10,6 +10,22 @@
     page!
 </p>
 
+
+    <h2>Current Deck(@Model.NewDeck.DeckCount() Cards):</h2>
+    @foreach(var card in Model.NewDeck.Lines)
+    {
+    <div class="flex-sm-row">
+        @card.Card.CardName
+        x
+        @card.Quantity
+        <a asp-action="RemoveFromDeck" asp-route-cardNumber="@card.Card.CardNumber"
+           asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">Remove</a>
+        <a asp-action="AddToDeck" asp-route-cardNumber="@card.Card.CardNumber"
+                asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">Add</a>
+    </div>
+     }
+
+
 <form asp-action="Index" method="get">
     <div class="form-actions">
 
@@ -22,7 +38,7 @@
             </label>
 
             <label class="btn btn-secondary w-100">
-                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Green" /> Green
+                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off"  value="Green"/> Green
             </label>
 
             <label class="btn btn-secondary w-100">
@@ -40,15 +56,21 @@
     </div>
 </form>
 
+<form asp-action="Index" method="post">
+    <div class="row">
+        @foreach (var item in Model.Cards)
+        {
+            <input type="image" src="~/Images/Chrono Clash Card Images/@item.CardImage"
+                 alt="@item.CardName"
+                 style="width:25%;height:25%;" 
+                asp-action="AddToDeck" asp-route-cardNumber="@item.CardNumber"
+                asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]"
 
-<div class="row">
-    @foreach (var item in Model.Cards)
-    {
-        <img src="~/Images/Chrono Clash Card Images/@item.CardImage"
-             alt="@item.CardName"
-             style="width:272px;height:370px;" />
-    }
-</div>
+                 />
+
+        }
+    </div>
+</form>
 @*<div class="row">
     @foreach (var item in Model.NewDeck)
     {

@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Session;
 
 
 namespace ChronoClashDeckBuilder
@@ -28,8 +29,11 @@ namespace ChronoClashDeckBuilder
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ChronoClashDbContext>();
             services.AddScoped<ChronoClashDeckBuilder.Models.ICardRepository, ChronoClashDeckBuilder.Models.EFCardRepository>();
+            services.AddScoped<CurDeck>(sp => SessionDeck.GetCurDeck(sp));
             services.AddControllersWithViews();
             services.AddMvc();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +54,7 @@ namespace ChronoClashDeckBuilder
             app.UseAuthentication();
             app.UseRouting();
             app.UseAuthorization();
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

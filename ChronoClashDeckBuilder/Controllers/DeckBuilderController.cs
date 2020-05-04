@@ -3,25 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using ChronoClashDeckBuilder.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace ChronoClashDeckBuilder.Controllers
 {
     public class DeckBuilderController : Controller
     {
         private ICardRepository repository;
-        List<Card> curDeck = new List<Card>();
-
-        public DeckBuilderController(ICardRepository repo)
+        private CurDeck curDeck;
+        public DeckBuilderController(ICardRepository repo, CurDeck deckService)
         {
             repository = repo;
+            curDeck = deckService;
         }
         //Look at using cookies
         [HttpGet]
-        public IActionResult Index(string cardNumber, string cardName, string cardColor, string cardAbility)
+        public IActionResult Index(string cardName, string cardColor, string cardAbility)
         {
-            if (cardNumber != null)
-                curDeck.Add(repository.GetCard(cardNumber));
             ViewData["CardNameFilter"] = cardName;
             ViewData["CardColorFilter"] = cardColor;
             ViewData["CardAbilityFilter"] = cardAbility;
@@ -49,10 +47,20 @@ namespace ChronoClashDeckBuilder.Controllers
             }) ;
         }
 
-        public RedirectToActionResult AddToDeck(string cardNumber)
+        public RedirectToActionResult AddToDeck(string cardNumber, string cardName, string cardColor, string cardAbility)
         {
-            curDeck.Add(repository.GetCard(cardNumber));
-            return RedirectToAction("Index");
+            Card card = repository.GetCard(cardNumber);
+            if (card != null)
+                curDeck.AddCard(card);
+            return RedirectToAction("Index",new { cardName, cardColor, cardAbility });
+        }
+
+        public RedirectToActionResult RemoveFromDeck(string cardNumber, string cardName, string cardColor, string cardAbility)
+        {
+            Card card = repository.GetCard(cardNumber);
+            if (card != null)
+                curDeck.RemoveCard(card);
+            return RedirectToAction("Index", new { cardName, cardColor, cardAbility });
         }
     }
 }
