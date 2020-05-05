@@ -5,103 +5,105 @@
 }
 <h1>Deck Builder!</h1>
 <p>
-    I still have to implement this page. Please check out the
-    <a class="btn-link" asp-area="" asp-controller="Cards" asp-action="Index">Card List</a>
-    page!
+    Please select a card to add it your deck.
 </p>
-
-
-<h2>Current Deck(@Model.NewDeck.DeckCount() Cards):</h2>
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Card</th>
-            <th>Qty</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var card in Model.NewDeck.Lines)
-        {
+@if (Model.NewDeck.DeckCount() > 0)
+{
+    <h2>Current Deck(@Model.NewDeck.DeckCount() Cards):</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
             <tr>
-                <td class="text-center">
-                    @card.Card.CardName
-                </td>
-                <td class="text-center">
-                    @card.Quantity
-                </td>
-                <td>
-                    <a class="btn btn-sm btn-danger" asp-action="RemoveFromDeck" asp-route-cardNumber="@card.Card.CardNumber"
-                       asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">Remove</a>
-                    <a class="btn btn-sm btn-success" asp-action="AddToDeck" asp-route-cardNumber="@card.Card.CardNumber"
-                            asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">
-                        Add
-                    </a>
-                </td>
+                <th>Card</th>
+                <th>Qty</th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var card in Model.NewDeck.Lines)
+            {
+                <tr>
+                    <td class="text-center">
+                        @card.Card.CardName
+                    </td>
+                    <td class="text-center">
+                        @card.Quantity
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-danger" asp-action="RemoveFromDeck" asp-route-cardNumber="@card.Card.CardNumber" asp-route-pageNumber="@Model.Cards.PageIndex"
+                           asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">Remove</a>
+                        <a class="btn btn-sm btn-success" asp-action="AddToDeck" asp-route-cardNumber="@card.Card.CardNumber" asp-route-pageNumber="@Model.Cards.PageIndex"
+                           asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">
+                            Add
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+<form asp-action="Index" method="get">
+    <div class="form-actions">
+
+        <input type="text" placeholder="Enter Card Name" name="cardName" value="@ViewData["CardNameFilter"]" />
+        <input type="text" placeholder="Enter Card Ability" name="cardAbility" value="@ViewData["CardAbilityFilter"]" />
+        <div class="btn-group btn-group-toggle just" data-toggle="buttons">
+
+            <label class="btn btn-secondary w-100">
+                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Blue" /> Blue
+            </label>
+
+            <label class="btn btn-secondary w-100">
+                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Green" /> Green
+            </label>
+
+            <label class="btn btn-secondary w-100">
+                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Red" /> Red
+            </label>
+
+            <label class="btn btn-secondary w-100">
+                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Purple" /> Purple
+            </label>
+        </div>
+
+        <input type="submit" value="Search" class="btn btn-default" /> |
+        <a asp-action="Index">Reset Filters</a>
+
+    </div>
+</form>
+
+<form asp-action="Index" method="post">
+    <div class="row">
+        @foreach (var item in Model.Cards)
+        {
+            <input type="image" src="~/Images/Chrono Clash Card Images/@item.CardImage"
+                   alt="@item.CardName"
+                   style="width:23%;height:23%;"
+                   asp-action="AddToDeck" asp-route-cardNumber="@item.CardNumber"
+                   asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]" asp-route-pageNumber="@Model.Cards.PageIndex"/>
+
         }
-    </tbody>
-</table>
-
-
-    <form asp-action="Index" method="get">
-        <div class="form-actions">
-
-            <input type="text" placeholder="Enter Card Name" name="cardName" value="@ViewData["CardNameFilter"]" />
-            <input type="text" placeholder="Enter Card Ability" name="cardAbility" value="@ViewData["CardAbilityFilter"]" />
-            <div class="btn-group btn-group-toggle just" data-toggle="buttons">
-
-                <label class="btn btn-secondary w-100">
-                    <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Blue" /> Blue
-                </label>
-
-                <label class="btn btn-secondary w-100">
-                    <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Green" /> Green
-                </label>
-
-                <label class="btn btn-secondary w-100">
-                    <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Red" /> Red
-                </label>
-
-                <label class="btn btn-secondary w-100">
-                    <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Purple" /> Purple
-                </label>
-            </div>
-
-            <input type="submit" value="Search" class="btn btn-default" /> |
-            <a asp-action="Index">Reset Filters</a>
-
-        </div>
-    </form>
-
-    <form asp-action="Index" method="post">
-        <div class="row">
-            @foreach (var item in Model.Cards)
-            {
-                <input type="image" src="~/Images/Chrono Clash Card Images/@item.CardImage"
-                       alt="@item.CardName"
-                       style="width:25%;height:25%;"
-                       asp-action="AddToDeck" asp-route-cardNumber="@item.CardNumber"
-                       asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]" />
-
-            }
-        </div>
-    </form>
-    @*<div class="row">
-            @foreach (var item in Model.NewDeck)
-            {
-
-                @item.CardName
-
-            }
-        </div>
-        <div class="row">
-            @foreach (var item in Model.Cards)
-            {
-                <a method="post" asp-controller="DeckBuilder" asp-action="AddToDeck" asp-route-cardNumber="@item.CardNumber">
-                    <img src="~/Images/Chrono Clash Card Images/@item.CardImage"
-                         alt="@item.CardName"
-                         style="width:272px;height:370px;" />
-
-                </a>
-            }
-        </div>*@
+    </div>
+</form>
+@{
+    var prevDisabled = !Model.Cards.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Cards.HasNextPage ? "disabled" : "";
+}
+<footer>
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.Cards.PageIndex - 1)"
+       asp-route-cardName="@ViewData["CardNameFilter"]"
+       asp-route-cardAbility="@ViewData["CardAbilityFilter"]"
+       asp-route-cardColor="@ViewData["CardColorFilter"]"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.Cards.PageIndex + 1)"
+       asp-route-cardName="@ViewData["CardNameFilter"]"
+       asp-route-cardAbility="@ViewData["CardAbilityFilter"]"
+       asp-route-cardColor="@ViewData["CardColorFilter"]"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+</footer>

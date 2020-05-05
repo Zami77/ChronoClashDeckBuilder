@@ -7,7 +7,7 @@ namespace ChronoClashDeckBuilder.Models.ViewModels
 {
     public class DeckBuilderListViewModel
     {
-        public IEnumerable<Card> Cards { get; set; }
+        public PaginatedList<Card> Cards { get; set; }
         public CurDeck NewDeck { get; set; }
     }
 }
