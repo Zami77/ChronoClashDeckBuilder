@@ -4,14 +4,16 @@ using ChronoClashDeckBuilder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ChronoClashDeckBuilder.Migrations
 {
     [DbContext(typeof(ChronoClashDbContext))]
-    partial class ChronoClashDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200513174852_DeckCount")]
+    partial class DeckCount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,9 +71,6 @@ namespace ChronoClashDeckBuilder.Migrations
                 {
                     b.Property<int>("DeckId")
                         .HasColumnType("int");
-
-                    b.Property<string>("DeckName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ExtraDeckCards")
                         .HasColumnType("nvarchar(max)");

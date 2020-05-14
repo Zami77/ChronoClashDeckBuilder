@@ -24,12 +24,13 @@ namespace ChronoClashDeckBuilder.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=chronoclash.database.windows.net;Initial Catalog=ChronoClashDatabase;User ID=AdminChronoClash;Password=****;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                optionsBuilder.UseSqlServer("Data Source=chronoclash.database.windows.net;Initial Catalog=ChronoClashDatabase;User ID=AdminChronoClash;Password=JabberWock77;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.ForSqlServerUseIdentityColumns();
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Card>(entity =>
             {

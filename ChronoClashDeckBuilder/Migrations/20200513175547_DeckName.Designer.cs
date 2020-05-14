@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChronoClashDeckBuilder.Migrations
 {
     [DbContext(typeof(ChronoClashDbContext))]
-    [Migration("20200422221450_AddingIdentity")]
-    partial class AddingIdentity
+    [Migration("20200513175547_DeckName")]
+    partial class DeckName
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,16 +70,24 @@ namespace ChronoClashDeckBuilder.Migrations
             modelBuilder.Entity("ChronoClashDeckBuilder.Models.Deck", b =>
                 {
                     b.Property<int>("DeckId")
-                        .HasColumnName("DeckID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("NumberOfExtraDeck")
-                        .HasColumnType("int");
+                    b.Property<string>("DeckName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtraDeckCards")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MainDeckCards")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("NumberOfMainDeck")
                         .HasColumnType("int");
 
-                    b.Property<int?>("NumberOfSideDeck")
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("numberOfExtraDeck")
                         .HasColumnType("int");
 
                     b.HasKey("DeckId")

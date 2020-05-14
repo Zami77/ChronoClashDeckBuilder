@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChronoClashDeckBuilder.Migrations
 {
     [DbContext(typeof(ChronoClashDbContext))]
-    [Migration("20200422224359_AddingIdentity-2")]
-    partial class AddingIdentity2
+    [Migration("20200513045516_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,8 @@ namespace ChronoClashDeckBuilder.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                .HasAnnotation("SqlServer:IdentitySeed", 1)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("ChronoClashDeckBuilder.Models.Card", b =>
@@ -70,16 +72,18 @@ namespace ChronoClashDeckBuilder.Migrations
             modelBuilder.Entity("ChronoClashDeckBuilder.Models.Deck", b =>
                 {
                     b.Property<int>("DeckId")
-                        .HasColumnName("DeckID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("NumberOfExtraDeck")
-                        .HasColumnType("int");
+                    b.Property<string>("Cards")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("NumberOfMainDeck")
                         .HasColumnType("int");
 
-                    b.Property<int?>("NumberOfSideDeck")
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("numberOfExtraDeck")
                         .HasColumnType("int");
 
                     b.HasKey("DeckId")

@@ -13,15 +13,18 @@ namespace ChronoClashDeckBuilder.Models
             context = ctx;
         }
         public IQueryable<Card> Cards => context.Cards;
+
+
         public Card Add(Card card)
         {
             context.Add(card);
             return card;
         }
-
         public Card GetCard(string cardNumber)
         {
             return context.Cards.Find(cardNumber);
         }
+
+
     }
 }

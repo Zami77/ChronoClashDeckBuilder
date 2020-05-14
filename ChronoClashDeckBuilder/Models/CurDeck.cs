@@ -23,7 +23,12 @@ namespace ChronoClashDeckBuilder.Models
             }
             else
             {
-                if(line.Quantity < 3)
+                if(line.Card.CardType == "Extra Battler")
+                {
+                    if (line.Quantity < 1)
+                        line.Quantity++;
+                }
+                else if(line.Quantity < 3)
                     line.Quantity++;
             }
         }
@@ -45,9 +50,60 @@ namespace ChronoClashDeckBuilder.Models
         {
             int numCards = 0;
             foreach (var line in lineCollection)
-                numCards += line.Quantity;
+            {
+                if(line.Card.CardType != "Extra Battler")
+                    numCards += line.Quantity;
+            }
             return numCards;
         }
+        public virtual int ExtraDeckCount()
+        {
+            int numCards = 0;
+            foreach (var line in lineCollection)
+            {
+                if (line.Card.CardType == "Extra Battler")
+                    numCards++;
+            }
+            return numCards;
+        }
+
+        public virtual string GetMainCards()
+        {
+            string result = "";
+            foreach (var line in lineCollection)
+            {
+                if(line.Card.CardType != "Extra Battler")
+                    result += line.Card.CardNumber + " " + line.Quantity + " ";
+            }
+            return result;
+        }
+        public virtual string GetExtraCards()
+        {
+            string result = "";
+            foreach (var line in lineCollection)
+            {
+                if (line.Card.CardType == "Extra Battler")
+                    result += line.Card.CardNumber + " " + line.Quantity + " ";
+            }
+            return result;
+        }
+
+        public static Dictionary<string,int> GetCardDictionary(string input)
+        {
+            if (String.IsNullOrWhiteSpace(input))
+                return null;
+            Dictionary<string, int> finalCards = new Dictionary<string, int>();
+            string[] cards = input.Split(" ");
+            for(int i = 0; i < cards.Length-1;i++)
+            {
+                string curCard = cards[i++];
+                int curCardInt = Int32.Parse(cards[i]);
+                finalCards[curCard] = curCardInt;
+            }
+            return finalCards;
+
+        }
+
         public virtual void RemoveLine(Card card) => lineCollection.RemoveAll(l => l.Card.CardNumber == card.CardNumber);
         public virtual void Clear() => lineCollection.Clear();
         public virtual IEnumerable<CardLine> Lines => lineCollection;

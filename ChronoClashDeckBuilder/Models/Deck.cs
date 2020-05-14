@@ -7,11 +7,16 @@ namespace ChronoClashDeckBuilder.Models
 {
     public partial class Deck
     {
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        [Column("DeckID")]
         public int DeckId { get; set; }
+        public string UserId { get; set; }
+        public string DeckName { get; set; }
+        public string MainDeckCards { get; set; }
+        public string ExtraDeckCards { get; set; }
         public int? NumberOfMainDeck { get; set; }
-        public int? NumberOfSideDeck { get; set; }
-        public int? NumberOfExtraDeck { get; set; }
+        public int? numberOfExtraDeck { get; set; }
+
     }
 }

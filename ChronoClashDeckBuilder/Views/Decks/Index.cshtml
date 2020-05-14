@@ -1,14 +1,30 @@
-﻿
+﻿@model ChronoClashDeckBuilder.Models.ViewModels.DecksListViewModel
+@inject SignInManager<IdentityUser> signInManager;
+
 @{
     ViewData["Title"] = "Decks";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Deck List!</h1>
+    <h1 class="display-4">My Deck List!</h1>
     <p>
-        List of recently built decks. To be implemented!
+        List of your recently built decks. 
         Please check out the
         <a class="btn-link" asp-area="" asp-controller="Cards" asp-action="Index">Card List</a>
         page!
     </p>
-</div>
+    @if (signInManager.IsSignedIn(User))
+    {
+        @foreach (var deck in Model.Decks)
+        {
+            <div class="row">
+
+                <a class="btn btn-lg" asp-controller="Decks" asp-action="Deck" asp-route-deckId="@deck.DeckId">@deck.DeckName</a>
+            </div>
+        }
+    }
+    else
+    {
+        <p>You must be signed in to see your decks!</p>
+    }
+
