@@ -24,6 +24,11 @@ namespace ChronoClashDeckBuilder.Models
             base.AddCard(card);
             Session.SetJson("CurDeck", this);
         }
+        public override void AddCard(Card card, int qty)
+        {
+            base.AddCard(card, qty);
+            Session.SetJson("CurDeck", this);
+        }
         public override void RemoveCard(Card card)
         {
             base.RemoveCard(card);
@@ -32,6 +37,11 @@ namespace ChronoClashDeckBuilder.Models
         public override void RemoveLine(Card card)
         {
             base.RemoveLine(card);
+            Session.SetJson("CurDeck", this);
+        }
+        public override void GetDeckFromRepo(Deck editDeck, ICardRepository cardRepository)
+        {
+            base.GetDeckFromRepo(editDeck, cardRepository);
             Session.SetJson("CurDeck", this);
         }
         public override void Clear()

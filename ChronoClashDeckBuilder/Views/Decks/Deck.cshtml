@@ -1,15 +1,22 @@
 ﻿@model IEnumerable<Deck>
+@inject SignInManager<IdentityUser> signInManager;
 
 
 
     <div class="text-center">
         <h1 class="display-4">@Model.First().DeckName</h1>
-        <a class="btn btn-danger" asp-action="DeleteDeck" asp-route-deckId="@Model.First().DeckId">Delete Deck</a>
-    </div>
-    <h2>Main Deck:</h2>
-    <div class="row">
-        @if (Model.First().NumberOfMainDeck > 0)
+        @if (signInManager.UserManager.GetUserId(User) == Model.FirstOrDefault().UserId)
         {
+            <a class="btn btn-danger" asp-action="DeleteDeck" asp-route-deckId="@Model.First().DeckId">Delete Deck</a>
+            <a class="btn btn-secondary" asp-action="DownloadDeck" asp-route-deckId="@Model.First().DeckId">Download Deck</a>
+            <a class="btn btn-primary" asp-action="EditDeck" asp-route-deckId="@Model.First().DeckId">Edit Deck</a>
+
+        }
+    </div>
+<h2>Main Deck:</h2>
+<div class="row">
+    @if (Model.First().NumberOfMainDeck > 0)
+    {
         @foreach (KeyValuePair<string, int> entryMain in CurDeck.GetCardDictionary(Model.First().MainDeckCards))
         {
             string cardImage = entryMain.Key + ".jpg";
@@ -18,9 +25,9 @@
                  style="width:21%;height:21%" />
             <h3 class="card-title text-uppercase">X @entryMain.Value</h3>
         }
-        }
+    }
 
-    </div>
+</div>
 
 
 <h2>Extra Deck:</h2>
@@ -38,5 +45,5 @@
         }
     }
 
-    </div>
+</div>
 

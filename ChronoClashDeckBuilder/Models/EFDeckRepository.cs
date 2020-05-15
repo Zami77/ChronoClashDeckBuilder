@@ -23,7 +23,7 @@ namespace ChronoClashDeckBuilder.Models
 
         public void SaveDeck(Deck deck)
         {
-            var deckEntry = context.Decks.Find(deck.DeckId);
+            var deckEntry = context.Decks.Where(d => d.DeckId == deck.DeckId).FirstOrDefault();
             if (deckEntry != null)
             {
                 deckEntry.DeckName = deck.DeckName;

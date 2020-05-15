@@ -8,6 +8,7 @@ namespace ChronoClashDeckBuilder.Models
     public class CurDeck
     {
         private List<CardLine> lineCollection = new List<CardLine>();
+        public int curDeckId;
         public virtual void AddCard(Card card)
         {
             CardLine line = lineCollection
@@ -31,6 +32,14 @@ namespace ChronoClashDeckBuilder.Models
                 else if(line.Quantity < 3)
                     line.Quantity++;
             }
+        }
+        public virtual void AddCard(Card card, int qty)
+        {
+            lineCollection.Add(new CardLine
+            {
+                Card = card,
+                Quantity = qty
+            });
         }
         public virtual void RemoveCard(Card card)
         {
@@ -65,6 +74,17 @@ namespace ChronoClashDeckBuilder.Models
                     numCards++;
             }
             return numCards;
+        }
+
+        public virtual void GetDeckFromRepo(Deck editDeck, ICardRepository cardRepository)
+        {
+            Dictionary<string, int> mainDeck = GetCardDictionary(editDeck.MainDeckCards);
+            Dictionary<string, int> extraDeck = GetCardDictionary(editDeck.ExtraDeckCards);
+            foreach (KeyValuePair<string, int> entry in mainDeck)
+                this.AddCard(cardRepository.GetCard(entry.Key), entry.Value);
+            foreach (KeyValuePair<string, int> entry in extraDeck)
+                this.AddCard(cardRepository.GetCard(entry.Key), entry.Value);
+            curDeckId = editDeck.DeckId;
         }
 
         public virtual string GetMainCards()

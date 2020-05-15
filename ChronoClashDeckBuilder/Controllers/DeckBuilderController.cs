@@ -61,6 +61,14 @@ namespace ChronoClashDeckBuilder.Controllers
             }) ;
         }
 
+        public RedirectToActionResult EditDeck(int editDeckId)
+        {
+            curDeck.Clear();
+            curDeck.GetDeckFromRepo(deckRepository.Decks.Where(d => d.DeckId == editDeckId).FirstOrDefault(), repository);
+            curDeck.curDeckId = editDeckId;
+            return RedirectToAction("Index");
+        }
+
         public RedirectToActionResult AddToDeck(string cardNumber, string cardName, string cardColor, string cardAbility, int? pageNumber)
         {
             Card card = repository.GetCard(cardNumber);
@@ -99,7 +107,7 @@ namespace ChronoClashDeckBuilder.Controllers
                 }
                 Deck savedDeck = new Deck()
                 {
-                    DeckId = deckRepository.Decks.OrderByDescending(d => d.DeckId).FirstOrDefault().DeckId + 1,
+                    DeckId = (curDeck.curDeckId > 0) ? curDeck.curDeckId : deckRepository.Decks.OrderByDescending(d => d.DeckId).FirstOrDefault().DeckId + 1,
                     UserId = _userManager.GetUserId(HttpContext.User),
                     DeckName = deckName,
                     MainDeckCards = curDeck.GetMainCards(),
