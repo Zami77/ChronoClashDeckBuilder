@@ -107,8 +107,9 @@ namespace ChronoClashDeckBuilder.Controllers
                 }
                 Deck savedDeck = new Deck()
                 {
-                    DeckId = (curDeck.curDeckId > 0) ? curDeck.curDeckId : deckRepository.Decks.OrderByDescending(d => d.DeckId).FirstOrDefault().DeckId + 1,
+                    DeckId = (curDeck.curDeckId > 0) ? curDeck.curDeckId : (deckRepository.Decks.OrderByDescending(d => d.DeckId).FirstOrDefault() == null ? 0 : deckRepository.Decks.OrderByDescending(d => d.DeckId).FirstOrDefault().DeckId) + 1,
                     UserId = _userManager.GetUserId(HttpContext.User),
+                    UserName = _userManager.GetUserName(HttpContext.User),
                     DeckName = deckName,
                     MainDeckCards = curDeck.GetMainCards(),
                     ExtraDeckCards = curDeck.GetExtraCards(),

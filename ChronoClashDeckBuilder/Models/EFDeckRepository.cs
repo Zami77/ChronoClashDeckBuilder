@@ -32,6 +32,7 @@ namespace ChronoClashDeckBuilder.Models
                 deckEntry.NumberOfMainDeck = deck.NumberOfMainDeck;
                 deckEntry.numberOfExtraDeck = deck.numberOfExtraDeck;
                 deckEntry.UserId = deck.UserId;
+                deckEntry.UserName = deck.UserName;
             }
             else
                 context.Decks.Add(deck);

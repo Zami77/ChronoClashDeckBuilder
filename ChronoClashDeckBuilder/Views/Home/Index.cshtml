@@ -1,16 +1,65 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-    <body>
-            <div class="text-center">
-                <img src="~/Images/Naruto Test Pic.png"
-                     alt="Naruto-Thumbs-Up"
-                     style="width:200px;height:200px;"
-                     align="right" />
-                <h1 class="display-4">Welcome to the Chrono Clash Deck Builder!</h1>
-                <p>
-                    Thanks for checking out the site! This is a currently in progress project to create a deck builder for the Chrono Clash card game. I will continute to upload cards from the newer sets and add more functions to the Deck Builder. Please enjoy!
-                </p>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .fa {
+        padding: 10px;
+        font-size: 35px;
+        width: 50px;
+        text-align: center;
+        text-decoration: none;
+        margin: 10px 4px;
+    }
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+</style>
+
+
+<header class="masthead">
+    <div class="container h-100">
+        <img class="img-fluid d-block mx-auto" src="~/Images/Naruto banner.jpg">
+
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <h1 class="font-weight-light">Welcome to the Chrono Clash Deck Builder!</h1>
+                <p class="lead">A web application to view, build, and save Chrono Clash Decks</p>
+            </div>
         </div>
-    </body>
+    </div>
+</header>
+
+@*<img src="~/Images/Naruto Test Pic.png"
+     alt="Naruto-Thumbs-Up"
+     style="width:200px;height:200px;"
+     align="right" />*@
+<body>
+    <p>
+        Thanks for visiting! This project has been a passion project brewing in my head since around December 2019.
+        I love playing other card games such as Dragon Ball and always enjoyed the deck builders that they have, but
+        noticed the lack of either a card database or a deck builder for Chrono Clash.
+    </p>
+
+    <p>
+        So, in my quest to get my developer skills
+        back up to snuff, I decided to tackle it. A few months and lots of frustrated hours later, I present to you the <i>kinda</i>
+        finshed product.
+    </p>
+
+    <p>
+        There's still a lot of work to be done on it, and eventually I'd like to recreate the site in a more dynamic
+        framework such as React.js, but for now I hope you enjoy. Please don't hesitate to contact me for any questions, comments, and most
+        importantly, feedback on the site. Once again, thanks for visiting, hope you get some use out of it!
+    </p>
+    <p>-Danny</p>
+
+        <a href="https://www.facebook.com/dan.lungaro" class="fa fa-facebook"></a>
+        <a href="https://github.com/Zami77/ChronoClashDeckBuilder" class="fa fa-github"></a>
+        <a href="mailto:DLungaro@yahoo.com" class="fa fa-envelope"></a>
+
+</body>
+
+
 

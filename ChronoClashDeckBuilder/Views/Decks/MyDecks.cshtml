@@ -2,17 +2,15 @@
 @inject SignInManager<IdentityUser> signInManager;
 
 @{
-    ViewData["Title"] = "Decks";
+    ViewData["Title"] = "My Decks";
 }
 
 <div class="text-center">
     <h1 class="display-4">My Deck List!</h1>
     <p>
         List of your recently built decks. 
-        Please check out the
-        <a class="btn-link" asp-area="" asp-controller="Cards" asp-action="Index">Card List</a>
-        page!
     </p>
+    </div>
     @if (signInManager.IsSignedIn(User))
     {
         @foreach (var deck in Model.Decks)

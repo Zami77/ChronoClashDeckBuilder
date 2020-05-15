@@ -33,11 +33,19 @@ namespace ChronoClashDeckBuilder.Controllers
 
         }
 
-        public IActionResult Index()
+        public IActionResult MyDecks()
         {
             DecksListViewModel decksList = new DecksListViewModel();
             decksList.Cards = _cardRepository.Cards;
             decksList.Decks = _deckRepository.Decks.Where(d => d.UserId == _userManager.GetUserId(User));
+            return View(decksList);
+        }
+
+        public IActionResult PublicDecks()
+        {
+            DecksListViewModel decksList = new DecksListViewModel();
+            decksList.Cards = _cardRepository.Cards;
+            decksList.Decks = _deckRepository.Decks.OrderByDescending(d => d.DeckId);
             return View(decksList);
         }
         public IActionResult Deck(int deckId)

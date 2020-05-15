@@ -7,43 +7,41 @@
         <h1 class="display-4">@Model.First().DeckName</h1>
         @if (signInManager.UserManager.GetUserId(User) == Model.FirstOrDefault().UserId)
         {
-            <a class="btn btn-danger" asp-action="DeleteDeck" asp-route-deckId="@Model.First().DeckId">Delete Deck</a>
-            <a class="btn btn-secondary" asp-action="DownloadDeck" asp-route-deckId="@Model.First().DeckId">Download Deck</a>
             <a class="btn btn-primary" asp-action="EditDeck" asp-route-deckId="@Model.First().DeckId">Edit Deck</a>
-
+            <a class="btn btn-danger" asp-action="DeleteDeck" asp-route-deckId="@Model.First().DeckId">Delete Deck</a>
         }
+        <a class="btn btn-secondary" asp-action="DownloadDeck" asp-route-deckId="@Model.First().DeckId">Download Deck</a>
+
     </div>
-<h2>Main Deck:</h2>
-<div class="row">
-    @if (Model.First().NumberOfMainDeck > 0)
-    {
-        @foreach (KeyValuePair<string, int> entryMain in CurDeck.GetCardDictionary(Model.First().MainDeckCards))
-        {
-            string cardImage = entryMain.Key + ".jpg";
-            <img src="~/Images/Chrono Clash Card Images/@cardImage"
-                 alt="@entryMain.Key"
-                 style="width:21%;height:21%" />
-            <h3 class="card-title text-uppercase">X @entryMain.Value</h3>
-        }
-    }
+        
+        <h2>Main Deck:</h2>
+        <div class="row">
+            @if (Model.First().NumberOfMainDeck > 0)
+            {
+                @foreach (KeyValuePair<string, int> entryMain in CurDeck.GetCardDictionary(Model.First().MainDeckCards))
+                {
+                    string cardImage = entryMain.Key + ".jpg";
+                    <img src="~/Images/Chrono Clash Card Images/@cardImage"
+                         alt="@entryMain.Key"
+                         style="width:20%;height:20%" />
+                    <h3 class="card-title text-uppercase">X @entryMain.Value</h3>
+                }
+            }
 
-</div>
+        </div>
+        <h2>Extra Deck:</h2>
+        <div class="row">
+            @if (Model.First().numberOfExtraDeck > 0)
+            {
+                @foreach (KeyValuePair<string, int> entryExtra in CurDeck.GetCardDictionary(Model.First().ExtraDeckCards))
+                {
+                    string cardImage = entryExtra.Key + ".jpg";
+                    Console.WriteLine(cardImage);
 
-
-<h2>Extra Deck:</h2>
-<div class="row">
-    @if (Model.First().numberOfExtraDeck > 0)
-    {
-        @foreach (KeyValuePair<string, int> entryExtra in CurDeck.GetCardDictionary(Model.First().ExtraDeckCards))
-        {
-            string cardImage = entryExtra.Key + ".jpg";
-            Console.WriteLine(cardImage);
-
-            <img src="~/Images/Chrono Clash Card Images/@cardImage"
-                 alt="@entryExtra.Key"
-                 style="width:24%;height:24%" />
-        }
-    }
-
-</div>
+                    <img src="~/Images/Chrono Clash Card Images/@cardImage"
+                         alt="@entryExtra.Key"
+                         style="width:20%;height:20%" />
+                }
+            }
+        </div>
 

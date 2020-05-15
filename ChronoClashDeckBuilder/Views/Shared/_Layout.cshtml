@@ -5,10 +5,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @Html.Partial("_Favicons")   
+    @Html.Partial("_Favicons")
     <title>@ViewData["Title"] - Chrono Clash Deck Builder</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap_Litera.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap_yeti.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
@@ -28,7 +29,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Cards" asp-action="Index">Card List</a>
                         </li>
-                        
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Decks" asp-action="PublicDecks">Community Decks</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="ContentCreators">Content Creators</a>
                         </li>
@@ -39,7 +42,7 @@
                     @if (signInManager.IsSignedIn(User))
                     {
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Decks" asp-action="Index">My Decks</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Decks" asp-action="MyDecks">My Decks</a>
                         </li>
                         <li class="nav-item">
                             <form method="post" asp-action="Logout" asp-controller="Account">
