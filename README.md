@@ -85,18 +85,18 @@ Requirements</br>
 | 9               | Software shall make sure decks are being saved to the database           | Test        |
 | 10              | Software shall make sure card database is up to date                     | View        |
 
-| Test ID | Requirements ID | Test Procedure                                   | Current Status | TimeStamp |
-|---------|-----------------|--------------------------------------------------|----------------|-----------|
-| 1       | 1               | Attempt to login with valid and invalid accounts | Not Tested     |           |
-| 2       | 2               | Attempt to create an account then login          | Not Tested     |           |
-| 3       | 3               | Make sure cards are visible                      | Not Tested     |           |
-| 4       | 4               | Attempt to make deck                             | Not Tested     |           |
-| 5       | 5               | Attempt to save deck                             | Not Tested     |           |
-| 6       | 6               | View all web pages                               | Not Tested     |           |
-| 7       | 7               | View list of cards                               | Not Tested     |           |
-| 8       | 8               | View if deck is created with invalid parameters  | Not Tested     |           |
-| 9       | 9               | Save deck and see if it's saved to the account   | Not Tested     |           |
-| 10      | 10              | View cards and make sure they are up to date     | Not Tested     |           |
+| Test ID | Requirements ID | Test Procedure                                   | Current Status | TimeStamp              |
+|---------|-----------------|--------------------------------------------------|----------------|------------------------|
+| 1       | 1               | Attempt to login with valid and invalid accounts | Success        | 5/16/2020, 10:27:16 AM |
+| 2       | 2               | Attempt to create an account then login          | Success        | 5/16/2020, 10:29:21 AM |
+| 3       | 3               | Make sure cards are visible                      | Success        | 5/16/2020, 10:29:34 AM |
+| 4       | 4               | Attempt to make deck                             | Success        | 5/16/2020, 10:31:11 AM |
+| 5       | 5               | Attempt to save deck                             | Success        | 5/16/2020, 10:31:40 AM |
+| 6       | 6               | View all web pages                               | Success        | 5/16/2020, 10:32:12 AM |
+| 7       | 7               | View list of cards                               | Success        | 5/16/2020, 10:31:53 AM |
+| 8       | 8               | View if deck is created with invalid parameters  | Success        | 5/16/2020, 10:32:12 AM |
+| 9       | 9               | Save deck and see if it's saved to the account   | Success        | 5/16/2020, 10:31:40 AM |
+| 10      | 10              | View cards and make sure they are up to date     | Success        | 5/16/2020, 10:32:12 AM |
 
 ### Card Data
 
