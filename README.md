@@ -98,6 +98,8 @@ Requirements</br>
 | 9       | 9               | Save deck and see if it's saved to the account   | Success        | 5/16/2020, 10:31:40 AM |
 | 10      | 10              | View cards and make sure they are up to date     | Success        | 5/16/2020, 10:32:12 AM |
 
+Currently all Requirements are covered by test cases and all test cases are passing as of the date in the time stamp.
+
 ### Card Data
 
 An excel file for the [Card Data](https://1drv.ms/x/s!As_NDUCOYXoGgd5wPTa4tM9WGTctVg?e=bKFpsZ). These sheets automatically produces a SQL Query to be inserted into the database.
