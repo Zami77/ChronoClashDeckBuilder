@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading;
 using Microsoft.AspNetCore.Server;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Http;
 
 namespace ChronoClashDeckBuilder.Controllers
 {
@@ -68,28 +69,32 @@ namespace ChronoClashDeckBuilder.Controllers
             return RedirectToAction("EditDeck", "DeckBuilder",routeValues);
         }
 
-        public IActionResult DownloadDeck(int deckId)
+        public RedirectToActionResult DownloadDeck(int deckId)
         {
             var deck = _deckRepository.Decks.Where(d => d.DeckId == deckId).FirstOrDefault();
             var fileName = deck.DeckName + ".txt";
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot", fileName);
-            string vPath = filePath.Replace(@"C:\Users\chunk\OneDrive\Documents\ChronoclashWebsite\CC Code\ChronoClashDatabase\ChronoClashDeckBuilder\ChronoClashDeckBuilder\wwwroot", "~").Replace(@"\", "/");
-
-            using (var fs = new StreamWriter(filePath))
-            {
-                fs.WriteLine("//Main Deck");
+            //var filePath = Path.Combine("wwwroot","DeckText", fileName);
+            //string vPath = filePath.Replace(@"C:\Users\chunk\OneDrive\Documents\ChronoclashWebsite\CC Code\ChronoClashDatabase\ChronoClashDeckBuilder\ChronoClashDeckBuilder\wwwroot", "~").Replace(@"\", "/");
+            string deckStr = "";
+            
+      
+                deckStr += ("//Main Deck\n");
                 foreach (KeyValuePair<string, int> entry in CurDeck.GetCardDictionary(deck.MainDeckCards))
                 {
-                    fs.WriteLine(entry.Value + " (" + entry.Key + ")");
+                    deckStr += (entry.Value + " (" + entry.Key + ")\n");
                 }
-                fs.WriteLine("//Extra Deck");
+                deckStr += ("//Extra Deck\n");
                 foreach (KeyValuePair<string, int> entry in CurDeck.GetCardDictionary(deck.ExtraDeckCards))
                 {
-                    fs.WriteLine(entry.Value + " (" + entry.Key + ")");
+                    deckStr += (entry.Value + " (" + entry.Key + ")\n");
                 }
-                fs.Close();
-            }
-            return File(vPath, "text/plain", "Download_" + fileName);
+
+
+            Response.Clear();
+            Response.ContentType = "application/force-download";
+            Response.Headers.Add("content-disposition", "attachment; filename =" + fileName);
+            Response.WriteAsync(deckStr);
+            return RedirectToAction("Deck", deckId);
         }
     }
 }
