@@ -5,7 +5,7 @@ Chrono Clash Deck Builder is an ASP.NET based web application to create a card d
 
 On my site, Users will make an account in order to save any decks that they may create. Any Visitor to the site will have access to view the card database and all public Decks on the site. The deck builder will be designed to follow the rules of the game to ensure only legal decks for the game are created.
 
-The current build of [The Chrono Clash Deck Builder](https://chronoclashdeckbuilder.azurewebsites.net/) is up and running. Currently Deck building is limited, and the capability to save/export decks isn't complete at this time. I will make sure to update this page frequently!
+The current build of [The Chrono Clash Deck Builder](https://chronoclashdeckbuilder.azurewebsites.net/) is up and running. Currently Deck building is operational! You can save, edit, and download decks to be used on untap.
 
 <a name="table-of-contents"/>
 
@@ -85,18 +85,20 @@ Requirements</br>
 | 9               | Software shall make sure decks are being saved to the database           | Test        |
 | 10              | Software shall make sure card database is up to date                     | View        |
 
-| Test ID | Requirements ID | Test Procedure                                   | Current Status | TimeStamp |
-|---------|-----------------|--------------------------------------------------|----------------|-----------|
-| 1       | 1               | Attempt to login with valid and invalid accounts | Not Tested     |           |
-| 2       | 2               | Attempt to create an account then login          | Not Tested     |           |
-| 3       | 3               | Make sure cards are visible                      | Not Tested     |           |
-| 4       | 4               | Attempt to make deck                             | Not Tested     |           |
-| 5       | 5               | Attempt to save deck                             | Not Tested     |           |
-| 6       | 6               | View all web pages                               | Not Tested     |           |
-| 7       | 7               | View list of cards                               | Not Tested     |           |
-| 8       | 8               | View if deck is created with invalid parameters  | Not Tested     |           |
-| 9       | 9               | Save deck and see if it's saved to the account   | Not Tested     |           |
-| 10      | 10              | View cards and make sure they are up to date     | Not Tested     |           |
+| Test ID | Requirements ID | Test Procedure                                   | Current Status | TimeStamp              |
+|---------|-----------------|--------------------------------------------------|----------------|------------------------|
+| 1       | 1               | Attempt to login with valid and invalid accounts | Success        | 5/16/2020, 10:27:16 AM |
+| 2       | 2               | Attempt to create an account then login          | Success        | 5/16/2020, 10:29:21 AM |
+| 3       | 3               | Make sure cards are visible                      | Success        | 5/16/2020, 10:29:34 AM |
+| 4       | 4               | Attempt to make deck                             | Success        | 5/16/2020, 10:31:11 AM |
+| 5       | 5               | Attempt to save deck                             | Success        | 5/16/2020, 10:31:40 AM |
+| 6       | 6               | View all web pages                               | Success        | 5/16/2020, 10:32:12 AM |
+| 7       | 7               | View list of cards                               | Success        | 5/16/2020, 10:31:53 AM |
+| 8       | 8               | View if deck is created with invalid parameters  | Success        | 5/16/2020, 10:32:12 AM |
+| 9       | 9               | Save deck and see if it's saved to the account   | Success        | 5/16/2020, 10:31:40 AM |
+| 10      | 10              | View cards and make sure they are up to date     | Success        | 5/16/2020, 10:32:12 AM |
+
+Currently all Requirements are covered by test cases and all test cases are passing as of the date in the time stamp.
 
 ### Card Data
 
