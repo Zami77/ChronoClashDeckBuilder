@@ -5,7 +5,7 @@ Chrono Clash Deck Builder is an ASP.NET based web application to create a card d
 
 On my site, Users will make an account in order to save any decks that they may create. Any Visitor to the site will have access to view the card database and all public Decks on the site. The deck builder will be designed to follow the rules of the game to ensure only legal decks for the game are created.
 
-The current build of [The Chrono Clash Deck Builder](https://chronoclashdeckbuilder.azurewebsites.net/) is up and running. Currently Deck building is operational! you can save,edit, and download decks to be used on untap.
+The current build of [The Chrono Clash Deck Builder](https://chronoclashdeckbuilder.azurewebsites.net/) is up and running. Currently Deck building is operational! You can save, edit, and download decks to be used on untap.
 
 <a name="table-of-contents"/>
 
