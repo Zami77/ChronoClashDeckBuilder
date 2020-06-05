@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Razor.Language;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -122,6 +123,38 @@ namespace ChronoClashDeckBuilder.Models
             }
             return finalCards;
 
+        }
+
+        public bool ValidColors()
+        {
+            bool blue = false, green = false, red = false, purple = false;
+            foreach(var line in lineCollection)
+            {
+                switch(line.Card.CardColor)
+                {
+                    case "Blue":
+                        blue = true;
+                        break;
+                    case "Green":
+                        green = true;
+                        break;
+                    case "Red":
+                        red = true;
+                        break;
+                    case "Purple":
+                        purple = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            int colorCount = 0;
+            if (blue) colorCount++;
+            if (green) colorCount++;
+            if (red) colorCount++;
+            if (purple) colorCount++;
+
+            return colorCount <= 2;
         }
 
         public virtual void RemoveLine(Card card) => lineCollection.RemoveAll(l => l.Card.CardNumber == card.CardNumber);

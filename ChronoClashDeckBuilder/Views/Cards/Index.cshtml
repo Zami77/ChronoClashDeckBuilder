@@ -15,19 +15,30 @@
         <div class="btn-group btn-group-toggle just" data-toggle="buttons">
 
             <label class="btn btn-secondary w-100">
-                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Blue" /> Blue
+                <input type="radio" name="cardColor"  autocomplete="off" value="Blue" /> Blue
             </label>
 
             <label class="btn btn-secondary w-100">
-                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Green" /> Green
+                <input type="radio" name="cardColor"  autocomplete="off" value="Green" /> Green
             </label>
 
             <label class="btn btn-secondary w-100">
-                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Red" /> Red
+                <input type="radio" name="cardColor"  autocomplete="off" value="Red" /> Red
             </label>
 
             <label class="btn btn-secondary w-100">
-                <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Purple" /> Purple
+                <input type="radio" name="cardColor"  autocomplete="off" value="Purple" /> Purple
+            </label>
+        </div>
+
+        <div class="btn-group btn-group-toggle just" data-toggle="buttons">
+
+            <label class="btn btn-secondary w-100">
+                <input type="radio" name="cardSet"  autocomplete="off" value="NB" /> Naruto
+            </label>
+
+            <label class="btn btn-secondary w-100">
+                <input type="radio" name="CardSet"  autocomplete="off" value="GZ" /> Godzilla
             </label>
         </div>
 
@@ -60,6 +71,7 @@
        asp-route-cardName="@ViewData["CardNameFilter"]"
        asp-route-cardAbility="@ViewData["CardAbilityFilter"]"
        asp-route-cardColor="@ViewData["CardColorFilter"]"
+       asp-route-cardSet="@ViewData["CardSetFilter"]"
        class="btn btn-default @prevDisabled">
         Previous
     </a>
@@ -68,6 +80,7 @@
        asp-route-cardName="@ViewData["CardNameFilter"]"
        asp-route-cardAbility="@ViewData["CardAbilityFilter"]"
        asp-route-cardColor="@ViewData["CardColorFilter"]"
+       asp-route-cardSet="@ViewData["CardSetFilter"]"
        class="btn btn-default @nextDisabled">
         Next
     </a>

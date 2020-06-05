@@ -38,6 +38,17 @@
                     </label>
                 </div>
 
+                <div class="btn-group btn-group-toggle just" data-toggle="buttons">
+
+                    <label class="btn btn-secondary w-100">
+                        <input type="radio" name="cardSet" autocomplete="off" value="NB" /> Naruto
+                    </label>
+
+                    <label class="btn btn-secondary w-100">
+                        <input type="radio" name="CardSet" autocomplete="off" value="GZ" /> Godzilla
+                    </label>
+                </div>
+
                 <input type="submit" value="Search" class="btn btn-default" /> |
                 <a asp-action="Index">Reset Filters</a>
 
@@ -52,7 +63,7 @@
                            alt="@item.CardName"
                            style="width:24%;height:24%;"
                            asp-action="AddToDeck" asp-route-cardNumber="@item.CardNumber"
-                           asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]" asp-route-pageNumber="@Model.Cards.PageIndex" />
+                           asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]" asp-route-deckName="@ViewData["DeckName"]" asp-route-cardSet="@ViewData["CardSetFilter"]" asp-route-pageNumber="@Model.Cards.PageIndex" />
 
                 }
             </div>
@@ -68,6 +79,7 @@
                asp-route-cardName="@ViewData["CardNameFilter"]"
                asp-route-cardAbility="@ViewData["CardAbilityFilter"]"
                asp-route-cardColor="@ViewData["CardColorFilter"]"
+               asp-route-cardSet="@ViewData["CardSetFilter"]"
                asp-route-deckName="@ViewData["DeckName"]"
                class="btn btn-default @prevDisabled">
                 Previous
@@ -77,6 +89,7 @@
                asp-route-cardName="@ViewData["CardNameFilter"]"
                asp-route-cardAbility="@ViewData["CardAbilityFilter"]"
                asp-route-cardColor="@ViewData["CardColorFilter"]"
+               asp-route-cardSet="@ViewData["CardSetFilter"]"
                asp-route-deckName="@ViewData["DeckName"]"
                class="btn btn-default @nextDisabled">
                 Next
@@ -90,10 +103,10 @@
 
         @if (signInManager.IsSignedIn(User))
         {
-            <form asp-action="SaveDeck">
-                <input type="text" id="DeckName" name="DeckName" placeholder="Enter Deck Name" value="@ViewData["DeckName"]" />
-                <input type="submit" value="Save Deck" class="btn btn-primary" />
-            </form>
+    <form asp-action="SaveDeck">
+        <input type="text" id="DeckName" name="DeckName" placeholder="Enter Deck Name" value="@ViewData["DeckName"]"/>
+        <input type="submit" value="Save Deck" class="btn btn-primary" />
+    </form>
         }
         else
         {

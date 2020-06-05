@@ -29,12 +29,13 @@ namespace ChronoClashDeckBuilder.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(string cardName, string cardColor, string cardAbility, string deckName, int? pageNumber)
+        public async Task<IActionResult> Index(string cardName, string cardColor, string cardAbility, string deckName, string cardSet, int? pageNumber)
         {
             ViewData["CardNameFilter"] = cardName;
             ViewData["CardColorFilter"] = cardColor;
             ViewData["CardAbilityFilter"] = cardAbility;
             ViewData["DeckName"] = deckName;
+            ViewData["CardSetFilter"] = cardSet;
 
             
             var cards = repository.Cards;
@@ -53,6 +54,10 @@ namespace ChronoClashDeckBuilder.Controllers
                 cards = cards.Where(c => c.CardAbilities.Contains(cardAbility));
 
             }
+            if(!String.IsNullOrEmpty(cardSet))
+            {
+                cards = cards.Where(c => c.CardSet.Contains(cardSet));
+            }
             int pageSize = 12;
             return View(new Models.ViewModels.DeckBuilderListViewModel
             {
@@ -69,22 +74,22 @@ namespace ChronoClashDeckBuilder.Controllers
             return RedirectToAction("Index");
         }
 
-        public RedirectToActionResult AddToDeck(string cardNumber, string cardName, string cardColor, string cardAbility, int? pageNumber)
+        public RedirectToActionResult AddToDeck(string cardNumber, string cardName, string cardColor, string cardAbility, string cardSet, string deckName, int? pageNumber)
         {
             Card card = repository.GetCard(cardNumber);
             if (card != null)
             {
                 curDeck.AddCard(card);
             }
-            return RedirectToAction("Index",new { cardName, cardColor, cardAbility,pageNumber });
+            return RedirectToAction("Index",new { cardName, cardColor, cardAbility, deckName, cardSet, pageNumber });
         }
 
-        public RedirectToActionResult RemoveFromDeck(string cardNumber, string cardName, string cardColor, string cardAbility,int? pageNumber)
+        public RedirectToActionResult RemoveFromDeck(string cardNumber, string cardName, string cardColor, string cardAbility,string deckName, string cardSet, int? pageNumber)
         {
             Card card = repository.GetCard(cardNumber);
             if (card != null)
                 curDeck.RemoveCard(card);
-            return RedirectToAction("Index", new { cardName, cardColor, cardAbility,pageNumber });
+            return RedirectToAction("Index", new { cardName, cardColor, cardAbility,deckName, cardSet, pageNumber });
         }
         public RedirectToActionResult ResetDeck()
         {
@@ -93,11 +98,17 @@ namespace ChronoClashDeckBuilder.Controllers
         }
         public RedirectToActionResult SaveDeck(string deckName)
         {
-            if(curDeck.ExtraDeckCount() < 6 || curDeck.DeckCount() < 50)
+            if (!curDeck.ValidColors())
+            {
+                TempData["message"] = "You have more than 2 colors in your deck";
+                return RedirectToAction("Index");
+            }
+            if (curDeck.ExtraDeckCount() < 6 || curDeck.DeckCount() < 50)
             {
                 TempData["message"] = "Main deck does not have 50 or more cards or Extra deck does not have 6 or more cards";
                 return RedirectToAction("Index");
             }
+            
             ViewData["DeckName"] = deckName;
             if (_signInManager.IsSignedIn(User))
             {
