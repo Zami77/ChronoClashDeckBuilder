@@ -7,6 +7,8 @@ On my site, Users will make an account in order to save any decks that they may 
 
 The current build of [The Chrono Clash Deck Builder](https://chronoclashdeckbuilder.azurewebsites.net/) is up and running. Currently Deck building is operational! You can save, edit, and download decks to be used on untap.
 
+Technologies: C#, Razor, ASP.Net Core, Entity Framework, Azure, SQL
+
 <a name="table-of-contents"/>
 
 # Table of contents
