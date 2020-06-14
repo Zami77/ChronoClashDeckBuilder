@@ -59,7 +59,7 @@
             <div class="row">
                 @foreach (var item in Model.Cards)
                 {
-                    <input type="image" src="~/Images/Chrono Clash Card Images/@item.CardImage"
+                    <input type="image" src="https://chronocards.blob.core.windows.net/cards/@item.CardImage"
                            alt="@item.CardName"
                            style="width:24%;height:24%;"
                            asp-action="AddToDeck" asp-route-cardNumber="@item.CardNumber"
