@@ -1,5 +1,5 @@
 # Chrono Clash Deck Builder
-### [Click here for the site!](https://chronoclashdeckbuilder.azurewebsites.net/)
+### [Click here for the site!](https://chronoclashdecks.azurewebsites.net/)
 
 Chrono Clash Deck Builder is an ASP.NET based web application to create a card database and deck builder for the Chrono Clash card game. The Chrono Clash Card Game is a Living Card Game that incorporates intellectual properties to battle against each other, more information can be found at [The Official Chrono Clash site](https://www.chronoclashsystem.com/en.php). 
 
