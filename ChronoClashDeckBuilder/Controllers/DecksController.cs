@@ -57,7 +57,7 @@ namespace ChronoClashDeckBuilder.Controllers
         public RedirectToActionResult DeleteDeck(int deckId)
         {
             _deckRepository.DeleteDeck(deckId);
-            return RedirectToAction("Index");
+            return RedirectToAction("MyDecks");
         }
 
         public RedirectToActionResult EditDeck(int deckId)

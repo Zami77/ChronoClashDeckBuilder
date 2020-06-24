@@ -21,7 +21,7 @@
                 @foreach (KeyValuePair<string, int> entryMain in CurDeck.GetCardDictionary(Model.First().MainDeckCards))
                 {
                     string cardImage = entryMain.Key + ".jpg";
-                    <img src="https://chronocards.blob.core.windows.net/cards/@cardImage"
+                    <img src="https://chronocardimages.blob.core.windows.net/chronocardimages/@cardImage"
                          alt="@entryMain.Key"
                          style="width:20%;height:20%" />
                     <h3 class="card-title text-uppercase">X @entryMain.Value</h3>
@@ -38,7 +38,7 @@
                     string cardImage = entryExtra.Key + ".jpg";
                     Console.WriteLine(cardImage);
 
-                    <img src="https://chronocards.blob.core.windows.net/cards/@cardImage"
+                    <img src="https://chronocardimages.blob.core.windows.net/chronocardimages/@cardImage"
                          alt="@entryExtra.Key"
                          style="width:20%;height:20%" />
                 }
