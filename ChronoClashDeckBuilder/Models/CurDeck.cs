@@ -25,7 +25,7 @@ namespace ChronoClashDeckBuilder.Models
             }
             else
             {
-                if(line.Card.CardType == "Extra Battler")
+                if (line.Card.CardType == "Extra Battler" || line.Card.CardType == "Extra Action")
                 {
                     if (line.Quantity < 1)
                         line.Quantity++;
@@ -61,7 +61,7 @@ namespace ChronoClashDeckBuilder.Models
             int numCards = 0;
             foreach (var line in lineCollection)
             {
-                if(line.Card.CardType != "Extra Battler")
+                if(line.Card.CardType != "Extra Battler" && line.Card.CardType != "Extra Action")
                     numCards += line.Quantity;
             }
             return numCards;
@@ -71,7 +71,7 @@ namespace ChronoClashDeckBuilder.Models
             int numCards = 0;
             foreach (var line in lineCollection)
             {
-                if (line.Card.CardType == "Extra Battler")
+                if (line.Card.CardType == "Extra Battler" || line.Card.CardType == "Extra Action")
                     numCards++;
             }
             return numCards;
