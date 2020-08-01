@@ -10,7 +10,6 @@
         Please select a card to add it your deck.
     </p>
 </div>
-<span id="popupCard" style="position:absolute;width:24%;height:24%;z-index:1;"></span>
 <div class="row">
     <div class="col-8">
 
@@ -66,13 +65,12 @@
                            alt="@item.CardName"
                            style="width:24%;height:24%;"
                            asp-action="AddToDeck" asp-route-cardNumber="@item.CardNumber"
-                           asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" 
-                           asp-route-cardAbility="@ViewData["CardAbilityFilter"]" asp-route-deckName="@ViewData["DeckName"]" 
-                           asp-route-cardSet="@ViewData["CardSetFilter"]" asp-route-pageNumber="@Model.Cards.PageIndex" 
-                           />
+                           asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]"
+                           asp-route-cardAbility="@ViewData["CardAbilityFilter"]" asp-route-deckName="@ViewData["DeckName"]"
+                           asp-route-cardSet="@ViewData["CardSetFilter"]" asp-route-pageNumber="@Model.Cards.PageIndex" />
 
                 }
-            
+
             </div>
         </form>
         @{
@@ -105,132 +103,123 @@
     </div>
 
     @*Cards currently in deck*@
-<div class="col-4">
+    <div class="col-4">
 
-    @if (signInManager.IsSignedIn(User))
-    {
-    <form asp-action="SaveDeck">
-        <input type="submit" value="Save Deck" id="DeckName" name="DeckName"  class="btn btn-primary" onclick="enterDeckName()"/>
-        <script>
-            function enterDeckName() {
-                var deckName = prompt("Please enter your deck name:", "");
-                document.getElementById("DeckName").value = deckName;
-            }
-        </script>
-    </form>
-    }
-    else
-    {
-        <p>Sign-in in to save deck!</p>
-    }
-    <a type="button" class="btn btn-primary" asp-action="ResetDeck">Reset Deck</a>
+        @if (signInManager.IsSignedIn(User))
+        {
+            <form asp-action="SaveDeck">
+                <input type="submit" value="Save Deck" id="DeckName" name="DeckName" class="btn btn-primary" onclick="enterDeckName()" />
+                <script>
+                    function enterDeckName() {
+                        var deckName = prompt("Please enter your deck name:", "");
+                        document.getElementById("DeckName").value = deckName;
+                    }
+                </script>
+            </form>
+        }
+        else
+        {
+            <p>Sign-in in to save deck!</p>
+        }
+        <a type="button" class="btn btn-primary" asp-action="ResetDeck">Reset Deck</a>
 
-    @*List of Main Deck cards*@
-    
-    <table class="table">
-        <h3>Deck: @Model.NewDeck.DeckCount() Cards</h3>
-        <thead>
-            <tr>
-                <th>Card</th>
-                <th>Qty</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
+        @*List of Main Deck cards*@
 
-            @foreach (var card in Model.NewDeck.Lines.OrderBy(c => c.Card.CardName).OrderBy(c => c.Card.CardColor))
-            {
+        <table class="table">
+            <h3>Deck: @Model.NewDeck.DeckCount() Cards</h3>
+            <thead>
+                <tr>
+                    <th>Card</th>
+                    <th>Qty</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
 
-                @if (card.Card.CardType == "Battler" || card.Card.CardType == "Action")
+                @foreach (var card in Model.NewDeck.Lines.OrderBy(c => c.Card.CardName).OrderBy(c => c.Card.CardColor))
                 {
 
-            <tr>
-                
-                    <td class="text-left" id="@card.Card.CardNumber" onmouseover="showCard('@card.Card.CardNumber')" onmouseout="hideCard()" 
-                        @if (card.Card.CardColor == "Red")
-                        {
-                            @:style = "background-color: rgba(255, 0, 0, 0.2);"
-                        }
-                        @if (card.Card.CardColor == "Green")
-                        {
-                            @:style = "background-color: rgba(0, 255, 0, 0.2);"
-                        }
-                        @if (card.Card.CardColor == "Blue")
-                        {
-                            @:style = "background-color: rgba(0, 0, 255, 0.2);"
-                        }
-                        @if (card.Card.CardColor == "Purple")
-                        {
-                            @:style = "background-color: rgba(148, 0, 211, 0.2);"
-                        }
-                         >
-                        @card.Card.CardName
-                    </td>
-                
-               
-                <td class="text-left">
-                    @card.Quantity
-                </td>
-                <td>
-                    <a class="btn btn-sm btn-danger" asp-action="RemoveFromDeck" asp-route-cardNumber="@card.Card.CardNumber" asp-route-pageNumber="@Model.Cards.PageIndex"
-                       asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">Remove</a>
-                    <a class="btn btn-sm btn-success" asp-action="AddToDeck" asp-route-cardNumber="@card.Card.CardNumber" asp-route-pageNumber="@Model.Cards.PageIndex"
-                       asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">
-                        Add
-                    </a>
-                </td>
-            </tr>
-                }
-            }
-        </tbody>
-    </table>
-    @*List of Extra Deck Cards*@
-    <table class="table">
-        <h3>Extra Deck: @Model.NewDeck.ExtraDeckCount() Cards</h3>
-        <thead>
-            <tr>
-                <th>Card</th>
-                <th>Qty</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
+                    @if (card.Card.CardType == "Battler" || card.Card.CardType == "Action")
+                    {
 
-            @foreach (var card in Model.NewDeck.Lines.OrderBy(c => c.Card.CardName).OrderBy(c => c.Card.CardColor))
-            {
-                @if (card.Card.CardType == "Extra Battler" || card.Card.CardType == "Extra Action")
+                        <tr>
+
+                            <td class="text-left" id="@card.Card.CardNumber" onmouseover="showCard('@card.Card.CardNumber')" onmouseout="hideCard('@card.Card.CardNumber')"
+                                @if (card.Card.CardColor == "Red") { @: style="background-color: rgba(255, 0, 0, 0.2);"
+                                }
+                                @if (card.Card.CardColor == "Green") { @: style="background-color: rgba(0, 255, 0, 0.2);"
+                                }
+                                @if (card.Card.CardColor == "Blue") { @: style="background-color: rgba(0, 0, 255, 0.2);"
+                                }
+                                @if (card.Card.CardColor == "Purple") { @: style="background-color: rgba(148, 0, 211, 0.2);"
+                                }>
+                                @card.Card.CardName
+                            </td>
+
+
+                            <td class="text-left">
+                                @card.Quantity
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-danger" asp-action="RemoveFromDeck" asp-route-cardNumber="@card.Card.CardNumber" asp-route-pageNumber="@Model.Cards.PageIndex"
+                                   asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">Remove</a>
+                                <a class="btn btn-sm btn-success" asp-action="AddToDeck" asp-route-cardNumber="@card.Card.CardNumber" asp-route-pageNumber="@Model.Cards.PageIndex"
+                                   asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">
+                                    Add
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        @*List of Extra Deck Cards*@
+        <table class="table">
+            <h3>Extra Deck: @Model.NewDeck.ExtraDeckCount() Cards</h3>
+            <thead>
+                <tr>
+                    <th>Card</th>
+                    <th>Qty</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var card in Model.NewDeck.Lines.OrderBy(c => c.Card.CardName).OrderBy(c => c.Card.CardColor))
                 {
-            <tr>
-                <td class="text-left" id="@card.Card.CardNumber" onmouseover="showCard('@card.Card.CardNumber')" onmouseout="hideCard()"
-                    @if (card.Card.CardColor == "Red") { @: style="background-color: rgba(255, 0, 0, 0.2);"
-                    }
-                    @if (card.Card.CardColor == "Green") { @: style="background-color: rgba(0, 255, 0, 0.2);"
-                    }
-                    @if (card.Card.CardColor == "Blue") { @: style="background-color: rgba(0, 0, 255, 0.2);"
-                    }
-                    @if (card.Card.CardColor == "Purple") { @: style="background-color: rgba(148, 0, 211, 0.2);"
-                    }>
-                    @card.Card.CardName
-                </td>
+                    @if (card.Card.CardType == "Extra Battler" || card.Card.CardType == "Extra Action")
+                    {
+                        <tr>
+                            <td class="text-left" id="@card.Card.CardNumber" onmouseover="showCard('@card.Card.CardNumber')" onmouseout="hideCard('@card.Card.CardNumber')"
+                                @if (card.Card.CardColor == "Red") { @: style="background-color: rgba(255, 0, 0, 0.2);"
+                                }
+                                @if (card.Card.CardColor == "Green") { @: style="background-color: rgba(0, 255, 0, 0.2);"
+                                }
+                                @if (card.Card.CardColor == "Blue") { @: style="background-color: rgba(0, 0, 255, 0.2);"
+                                }
+                                @if (card.Card.CardColor == "Purple") { @: style="background-color: rgba(148, 0, 211, 0.2);"
+                                }>
+                                @card.Card.CardName
+                            </td>
 
-                <td class="text-left">
-                    @card.Quantity
-                </td>
-                <td>
-                    <a class="btn btn-sm btn-danger" asp-action="RemoveFromDeck" asp-route-cardNumber="@card.Card.CardNumber" asp-route-pageNumber="@Model.Cards.PageIndex"
-                       asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">Remove</a>
-                    <a class="btn btn-sm btn-success" asp-action="AddToDeck" asp-route-cardNumber="@card.Card.CardNumber" asp-route-pageNumber="@Model.Cards.PageIndex"
-                       asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">
-                        Add
-                    </a>
-                </td>
-            </tr>
+                            <td class="text-left">
+                                @card.Quantity
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-danger" asp-action="RemoveFromDeck" asp-route-cardNumber="@card.Card.CardNumber" asp-route-pageNumber="@Model.Cards.PageIndex"
+                                   asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">Remove</a>
+                                <a class="btn btn-sm btn-success" asp-action="AddToDeck" asp-route-cardNumber="@card.Card.CardNumber" asp-route-pageNumber="@Model.Cards.PageIndex"
+                                   asp-route-cardColor="@ViewData["CardColorFilter"]" asp-route-cardName="@ViewData["CardNameFilter"]" asp-route-cardAbility="@ViewData["CardAbilityFilter"]">
+                                    Add
+                                </a>
+                            </td>
+                        </tr>
+                    }
                 }
-            }
-        </tbody>
-    </table>
-    @*}*@
-</div>
+            </tbody>
+        </table>
+        @*}*@
+    </div>
 </div>
 
 <script>
@@ -246,19 +235,39 @@
         let elemRect = elem.getBoundingClientRect();
         var cardImage = new Image();
         cardImage.src = 'https://chronocardimages.blob.core.windows.net/chronocardimages/' + cardNum + '.jpg';
-        let popupElem = document.getElementById("popupCard")
-        popupElem.style.left = (elemRect.left - (screen.width/6)) + 'px';
-        popupElem.style.right = elemRect.right + 'px';
-        popupElem.style.top = elemRect.top + 'px';
-        popupElem.style.bottom = elemRect.bottom + 'px';
-        popupElem.appendChild(cardImage);
+        cardImage.style.width = '50%';
+        cardImage.style.position = "absolute";
+        cardImage.style.zIndex = "1";
+        cardImage.style.left = (elemRect.left / 10) + 'px';
+        elem.appendChild(cardImage);
     }
-    function hideCard() {
+    function hideCard(cardNum) {
         console.log("hideCard()");
-        let element = document.getElementById("popupCard");
-        while (element.firstChild) {
-            element.removeChild(element.firstChild);
+        let element = document.getElementById(cardNum);
+        while (element.childElementCount > 0) {
+            element.removeChild(element.lastChild);
         }
+    }
+</script>
+<script>
+    function getWidth() {
+        return Math.max(
+            document.body.scrollWidth,
+            document.documentElement.scrollWidth,
+            document.body.offsetWidth,
+            document.documentElement.offsetWidth,
+            document.documentElement.clientWidth
+        );
+    }
+
+    function getHeight() {
+        return Math.max(
+            document.body.scrollHeight,
+            document.documentElement.scrollHeight,
+            document.body.offsetHeight,
+            document.documentElement.offsetHeight,
+            document.documentElement.clientHeight
+        );
     }
 </script>
 
