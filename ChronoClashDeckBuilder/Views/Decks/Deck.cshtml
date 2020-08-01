@@ -5,6 +5,7 @@
 
     <div class="text-center">
         <h1 class="display-4">@Model.First().DeckName</h1>
+        <h2>created by @Model.First().UserName</h2>
         @if (signInManager.UserManager.GetUserId(User) == Model.FirstOrDefault().UserId)
         {
             <a class="btn btn-primary" asp-action="EditDeck" asp-route-deckId="@Model.First().DeckId">Edit Deck</a>

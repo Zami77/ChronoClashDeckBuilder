@@ -83,8 +83,11 @@ namespace ChronoClashDeckBuilder.Models
             Dictionary<string, int> extraDeck = GetCardDictionary(editDeck.ExtraDeckCards);
             foreach (KeyValuePair<string, int> entry in mainDeck)
                 this.AddCard(cardRepository.GetCard(entry.Key), entry.Value);
-            foreach (KeyValuePair<string, int> entry in extraDeck)
-                this.AddCard(cardRepository.GetCard(entry.Key), entry.Value);
+            if (extraDeck != null)
+            {
+                foreach (KeyValuePair<string, int> entry in extraDeck)
+                    this.AddCard(cardRepository.GetCard(entry.Key), entry.Value);
+            }
             curDeckId = editDeck.DeckId;
         }
 
@@ -93,7 +96,7 @@ namespace ChronoClashDeckBuilder.Models
             string result = "";
             foreach (var line in lineCollection)
             {
-                if(line.Card.CardType != "Extra Battler")
+                if(line.Card.CardType != "Extra Battler" && line.Card.CardType != "Extra Action")
                     result += line.Card.CardNumber + " " + line.Quantity + " ";
             }
             return result;
@@ -103,7 +106,7 @@ namespace ChronoClashDeckBuilder.Models
             string result = "";
             foreach (var line in lineCollection)
             {
-                if (line.Card.CardType == "Extra Battler")
+                if (line.Card.CardType == "Extra Battler" || line.Card.CardType == "Extra Action")
                     result += line.Card.CardNumber + " " + line.Quantity + " ";
             }
             return result;

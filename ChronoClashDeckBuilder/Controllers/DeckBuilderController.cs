@@ -103,7 +103,7 @@ namespace ChronoClashDeckBuilder.Controllers
                 TempData["message"] = "You have more than 2 colors in your deck";
                 return RedirectToAction("Index");
             }
-            if (curDeck.ExtraDeckCount() < 6 || curDeck.DeckCount() < 50)
+            if ((curDeck.ExtraDeckCount() < 6 && curDeck.ExtraDeckCount() != 0) || curDeck.DeckCount() < 50)
             {
                 TempData["message"] = "Main deck does not have 50 or more cards or Extra deck does not have 6 or more cards";
                 return RedirectToAction("Index");
