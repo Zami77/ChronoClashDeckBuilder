@@ -4,18 +4,46 @@
 @{
     ViewData["Title"] = "Deck Builder";
 }
+
 <div class="text-center">
     <h1>Deck Builder!</h1>
     <p>
         Please select a card to add it your deck.
     </p>
 </div>
-<div class="row">
+<div class="row" >
     <div class="col-8">
 
         <form asp-action="Index" method="get">
-            <div class="form-actions">
+            <div class="form-actions justify-content-center">
+                @*<div class="row" >
+            <div class="col-xs-3" >
+                <input  type="text"  placeholder="Enter Card Name" name="cardName" value="@ViewData["CardNameFilter"]" />
+            </div>
+            <div class="col-xs-3 mr-2">
+                <input type="text"  placeholder="Enter Card Ability" name="cardAbility" value="@ViewData["CardAbilityFilter"]" />
+            </div>
+            <div class="btn-group btn-group-toggle btn  col-xs-3" data-toggle="buttons">
 
+                <label class="btn btn-secondary w-100">
+                    <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Blue" /> Blue
+                </label>
+
+                <label class="btn btn-secondary w-100">
+                    <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Green" /> Green
+                </label>
+
+                <label class="btn btn-secondary w-100">
+                    <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Red" /> Red
+                </label>
+
+                <label class="btn btn-secondary w-100">
+                    <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Purple" /> Purple
+                </label>
+
+
+            </div>
+        </div>*@
                 <input type="text" placeholder="Enter Card Name" name="cardName" value="@ViewData["CardNameFilter"]" />
                 <input type="text" placeholder="Enter Card Ability" name="cardAbility" value="@ViewData["CardAbilityFilter"]" />
                 <div class="btn-group btn-group-toggle just" data-toggle="buttons">
@@ -36,23 +64,24 @@
                         <input type="radio" name="cardColor" id="optionBlue" autocomplete="off" value="Purple" /> Purple
                     </label>
                 </div>
+                
+                <div class="row">
+                    <span id="dropdownPadding" class="mr-3"></span>
+                    <select name="cardSet" id="cardSet" class="form-control mr-1" style="width:auto">
+                        <option name="cardSet" value="" selected>All Sets</option>
+                        <optgroup label="Official Sets">
+                            <option name="cardSet" value="NB">Naruto</option>
+                            <option name="cardSet" value="GZ">Godzilla</option>
+                            <option name="cardSet" value="EV">Evangelion</option>
+                        </optgroup>
+                        <optgroup label="Fan Sets">
+                        </optgroup>
+                    </select>
 
-                <div class="btn-group btn-group-toggle just" data-toggle="buttons">
 
-                    <label class="btn btn-secondary w-100">
-                        <input type="radio" name="cardSet" autocomplete="off" value="NB" /> Naruto
-                    </label>
-
-                    <label class="btn btn-secondary w-100">
-                        <input type="radio" name="CardSet" autocomplete="off" value="GZ" /> Godzilla
-                    </label>
-                    <label class="btn btn-secondary w-100">
-                        <input type="radio" name="CardSet" autocomplete="off" value="EV" /> Evangelion
-                    </label>
+                    <input type="submit" value="Search" class="btn btn-primary mr-1" />
+                    <a asp-action="Index" class="btn  btn-warning mr-1">Reset Filters</a>
                 </div>
-
-                <input type="submit" value="Search" class="btn btn-default" /> |
-                <a asp-action="Index">Reset Filters</a>
 
             </div>
         </form>
