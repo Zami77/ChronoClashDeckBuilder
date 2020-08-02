@@ -98,6 +98,11 @@ namespace ChronoClashDeckBuilder.Controllers
         }
         public RedirectToActionResult SaveDeck(string deckName)
         {
+            if(!curDeck.ValidIP())
+            {
+                TempData["message"] = "You have more than 1 Card Set in your deck";
+                return RedirectToAction("Index");
+            }
             if (!curDeck.ValidColors())
             {
                 TempData["message"] = "You have more than 2 colors in your deck";
@@ -105,7 +110,7 @@ namespace ChronoClashDeckBuilder.Controllers
             }
             if ((curDeck.ExtraDeckCount() < 6 && curDeck.ExtraDeckCount() != 0) || curDeck.DeckCount() < 50)
             {
-                TempData["message"] = "Main deck does not have 50 or more cards or Extra deck does not have 6 or more cards";
+                TempData["message"] = "Main deck does not have 50 or more cards or Extra deck does not have 6 or more cards. (You are allowed to have 0 extra cards)";
                 return RedirectToAction("Index");
             }
             

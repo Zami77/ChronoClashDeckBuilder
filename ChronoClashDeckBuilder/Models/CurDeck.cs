@@ -160,6 +160,17 @@ namespace ChronoClashDeckBuilder.Models
             return colorCount <= 2;
         }
 
+        public bool ValidIP()
+        {
+            var cardSet = lineCollection.FirstOrDefault().Card.CardSet;
+            foreach(var line in lineCollection)
+            {
+                if (line.Card.CardSet != cardSet)
+                    return false;
+            }
+            return true;
+        }
+
         public virtual void RemoveLine(Card card) => lineCollection.RemoveAll(l => l.Card.CardNumber == card.CardNumber);
         public virtual void Clear() => lineCollection.Clear();
         public virtual IEnumerable<CardLine> Lines => lineCollection;
