@@ -147,13 +147,13 @@
                         <tr>
 
                             <td class="text-left" id="@card.Card.CardNumber" onmouseover="showCard('@card.Card.CardNumber')" onmouseout="hideCard('@card.Card.CardNumber')"
-                                @if (card.Card.CardColor == "Red") { @: style="background-color: rgba(255, 0, 0, 0.2);"
+                                @if (card.Card.CardColor.ToLower() == "red") { @: style="background-color: rgba(255, 0, 0, 0.2);"
                                 }
-                                @if (card.Card.CardColor == "Green") { @: style="background-color: rgba(0, 255, 0, 0.2);"
+                                @if (card.Card.CardColor.ToLower() == "green") { @: style="background-color: rgba(0, 255, 0, 0.2);"
                                 }
-                                @if (card.Card.CardColor == "Blue") { @: style="background-color: rgba(0, 0, 255, 0.2);"
+                                @if (card.Card.CardColor.ToLower() == "blue") { @: style="background-color: rgba(0, 0, 255, 0.2);"
                                 }
-                                @if (card.Card.CardColor == "Purple") { @: style="background-color: rgba(148, 0, 211, 0.2);"
+                                @if (card.Card.CardColor.ToLower() == "purple") { @: style="background-color: rgba(148, 0, 211, 0.2);"
                                 }>
                                 @card.Card.CardName
                             </td>
@@ -193,13 +193,13 @@
                     {
                         <tr>
                             <td class="text-left" id="@card.Card.CardNumber" onmouseover="showCard('@card.Card.CardNumber')" onmouseout="hideCard('@card.Card.CardNumber')"
-                                @if (card.Card.CardColor == "Red") { @: style="background-color: rgba(255, 0, 0, 0.2);"
+                                 @if (card.Card.CardColor.ToLower() == "red") { @: style="background-color: rgba(255, 0, 0, 0.2);"
                                 }
-                                @if (card.Card.CardColor == "Green") { @: style="background-color: rgba(0, 255, 0, 0.2);"
+                                @if (card.Card.CardColor.ToLower() == "green") { @: style="background-color: rgba(0, 255, 0, 0.2);"
                                 }
-                                @if (card.Card.CardColor == "Blue") { @: style="background-color: rgba(0, 0, 255, 0.2);"
+                                @if (card.Card.CardColor.ToLower() == "blue") { @: style="background-color: rgba(0, 0, 255, 0.2);"
                                 }
-                                @if (card.Card.CardColor == "Purple") { @: style="background-color: rgba(148, 0, 211, 0.2);"
+                                @if (card.Card.CardColor.ToLower() == "purple") { @: style="background-color: rgba(148, 0, 211, 0.2);"
                                 }>
                                 @card.Card.CardName
                             </td>
