@@ -1,48 +1,53 @@
 ﻿@model IEnumerable<Deck>
 @inject SignInManager<IdentityUser> signInManager;
+@{
+    ViewData["Title"] = Model.First().DeckName;
+}
+<div class="text-center">
+    <h1 class="display-4">@Model.First().DeckName</h1>
+    <h2>created by @Model.First().UserName</h2>
+    @if (signInManager.UserManager.GetUserId(User) == Model.FirstOrDefault().UserId)
+    {
+        <a class="btn btn-primary" asp-action="EditDeck" asp-route-deckId="@Model.First().DeckId">Edit Deck</a>
+        <a class="btn btn-danger" asp-action="DeleteDeck" asp-route-deckId="@Model.First().DeckId">Delete Deck</a>
+        @*<script data-ccg-type="mtg">
+                document.currentScript.dataset.href = location.href;
+                document.write(`<iframe frameborder="0" width="130" height="40" src="https://untap.in/user/deck-importer?uri=${encodeURIComponent(JSON.stringify(document.currentScript.dataset))}" ></iframe>`);
+            </script>*@
 
+    }
+    <a class="btn btn-secondary" asp-action="DownloadDeck" asp-route-deckId="@Model.First().DeckId">Download Deck</a>
 
+</div>
 
-    <div class="text-center">
-        <h1 class="display-4">@Model.First().DeckName</h1>
-        <h2>created by @Model.First().UserName</h2>
-        @if (signInManager.UserManager.GetUserId(User) == Model.FirstOrDefault().UserId)
+<h2>Main Deck:</h2>
+<div class="row">
+    @if (Model.First().NumberOfMainDeck > 0)
+    {
+        @foreach (KeyValuePair<string, int> entryMain in CurDeck.GetCardDictionary(Model.First().MainDeckCards))
         {
-            <a class="btn btn-primary" asp-action="EditDeck" asp-route-deckId="@Model.First().DeckId">Edit Deck</a>
-            <a class="btn btn-danger" asp-action="DeleteDeck" asp-route-deckId="@Model.First().DeckId">Delete Deck</a>
+            string cardImage = entryMain.Key + ".jpg";
+            <img src="https://chronocardimages.blob.core.windows.net/chronocardimages/@cardImage"
+                 alt="@entryMain.Key"
+                 style="width:20%;height:20%" />
+            <h3>X @entryMain.Value</h3>
         }
-        <a class="btn btn-secondary" asp-action="DownloadDeck" asp-route-deckId="@Model.First().DeckId">Download Deck</a>
+    }
 
-    </div>
-        
-        <h2>Main Deck:</h2>
-        <div class="row">
-            @if (Model.First().NumberOfMainDeck > 0)
-            {
-                @foreach (KeyValuePair<string, int> entryMain in CurDeck.GetCardDictionary(Model.First().MainDeckCards))
-                {
-                    string cardImage = entryMain.Key + ".jpg";
-                    <img src="https://chronocardimages.blob.core.windows.net/chronocardimages/@cardImage"
-                         alt="@entryMain.Key"
-                         style="width:20%;height:20%" />
-                    <h3 class="card-title text-uppercase">X @entryMain.Value</h3>
-                }
-            }
+</div>
+<h2>Extra Deck:</h2>
+<div class="row">
+    @if (Model.First().numberOfExtraDeck > 0)
+    {
+        @foreach (KeyValuePair<string, int> entryExtra in CurDeck.GetCardDictionary(Model.First().ExtraDeckCards))
+        {
+            string cardImage = entryExtra.Key + ".jpg";
+            Console.WriteLine(cardImage);
 
-        </div>
-        <h2>Extra Deck:</h2>
-        <div class="row">
-            @if (Model.First().numberOfExtraDeck > 0)
-            {
-                @foreach (KeyValuePair<string, int> entryExtra in CurDeck.GetCardDictionary(Model.First().ExtraDeckCards))
-                {
-                    string cardImage = entryExtra.Key + ".jpg";
-                    Console.WriteLine(cardImage);
-
-                    <img src="https://chronocardimages.blob.core.windows.net/chronocardimages/@cardImage"
-                         alt="@entryExtra.Key"
-                         style="width:20%;height:20%" />
-                }
-            }
-        </div>
+            <img src="https://chronocardimages.blob.core.windows.net/chronocardimages/@cardImage"
+                 alt="@entryExtra.Key"
+                 style="width:20%;height:20%" />
+        }
+    }
+</div>
 

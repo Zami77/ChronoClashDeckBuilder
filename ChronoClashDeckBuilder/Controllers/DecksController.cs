@@ -96,5 +96,25 @@ namespace ChronoClashDeckBuilder.Controllers
             Response.WriteAsync(deckStr);
             return RedirectToAction("Deck", deckId);
         }
+
+        public string UntapDeck(int deckId)
+        {
+            var deck = _deckRepository.Decks.Where(d => d.DeckId == deckId).FirstOrDefault();
+            string deckStr = "";
+
+
+            deckStr += ("//Main Deck\n");
+            foreach (KeyValuePair<string, int> entry in CurDeck.GetCardDictionary(deck.MainDeckCards))
+            {
+                deckStr += (entry.Value + " (" + entry.Key + ")\n");
+            }
+            deckStr += ("//Extra Deck\n");
+            foreach (KeyValuePair<string, int> entry in CurDeck.GetCardDictionary(deck.ExtraDeckCards))
+            {
+                deckStr += (entry.Value + " (" + entry.Key + ")\n");
+            }
+
+            return deckStr;
+        }
     }
 }
