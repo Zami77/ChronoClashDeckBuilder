@@ -20,11 +20,11 @@ namespace ChronoClashDeckBuilder.Controllers
     {
         private IDeckRepository _deckRepository;
         private ICardRepository _cardRepository;
-        private IHostingEnvironment _hostingEnvironment;
+        private Microsoft.AspNetCore.Hosting.IHostingEnvironment _hostingEnvironment;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
 
-        public DecksController(IDeckRepository deckRepository, ICardRepository cardRepository, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,IHostingEnvironment hostingEnvironment)
+        public DecksController(IDeckRepository deckRepository, ICardRepository cardRepository, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
         {
             _deckRepository = deckRepository;
             _cardRepository = cardRepository;
