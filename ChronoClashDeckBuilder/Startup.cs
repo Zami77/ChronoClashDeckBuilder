@@ -25,7 +25,7 @@ namespace ChronoClashDeckBuilder
         {
 
             services.AddDbContext<Models.ChronoClashDbContext>(options =>
-                options.UseSqlServer(Configuration["Data:ChronoClashCards:ChronoClashAzure"]));
+                options.UseSqlServer(Configuration["ChronoClashAzureDBConnectionString"]));
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ChronoClashDbContext>();
             services.AddScoped<ChronoClashDeckBuilder.Models.ICardRepository, ChronoClashDeckBuilder.Models.EFCardRepository>();
